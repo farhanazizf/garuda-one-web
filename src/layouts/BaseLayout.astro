@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import { club, registrationLink } from '../data/club';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+}
+
+const { title, description, path = '/' } = Astro.props;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '');
+const canonical = siteUrl ? new URL(path, `${siteUrl}/`).toString() : undefined;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsClub',
+  name: club.name,
+  description: 'Klub basket usia muda di Bintaro, Tangerang Selatan.',
+  telephone: '+62 821-1517-2019',
+  areaServed: 'Tangerang Selatan',
+  sport: 'Basketball',
+  sameAs: [club.instagram],
+  ...(siteUrl ? { url: siteUrl, logo: `${siteUrl}${club.logo}` } : {}),
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0c0b" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content={club.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {siteUrl && <meta property="og:image" content={`${siteUrl}${club.logo}`} />}
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#konten">Lewati ke konten</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Garuda One Basketball, beranda">
+        <img src={club.logo} alt="" width="56" height="56" />
+        <span>GARUDA<span class="brand-accent">ONE</span><small>BASKETBALL</small></span>
+      </a>
+      <nav aria-label="Navigasi utama">
+        <a href="/">Beranda</a>
+        <a href="/tentang/">Tentang klub</a>
+        <a href="/sponsor/">Untuk sponsor</a>
+      </nav>
+      <a class="header-cta" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya pendaftaran <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="konten" class="page-shell"><slot /></main>
+    <footer class="site-footer">
+      <div>
+        <p class="footer-name">GARUDA ONE<br />BASKETBALL</p>
+        <p>{club.tagline} · {club.location}</p>
+      </div>
+      <div class="footer-links">
+        <a href={club.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href={registrationLink} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+      </div>
+      <p class="footer-note">Informasi jadwal, lokasi latihan, dan biaya dikonfirmasi langsung oleh admin klub.</p>
+    </footer>
+  </body>
+</html>

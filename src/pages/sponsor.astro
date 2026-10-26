@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { club, sponsorLink } from '../data/club';
+---
+
+<BaseLayout title="Kerja Sama & Sponsor | Garuda One Basketball" description="Kenali peluang kerja sama dan sponsorship dengan Garuda One Basketball, klub basket usia muda di Bintaro, Tangerang Selatan." path="/sponsor/">
+  <section class="page-hero sponsor-hero">
+    <p class="eyebrow"><span class="eyebrow-line"></span> UNTUK MITRA & SPONSOR</p>
+    <h1>Dukung ruang<br />mereka untuk <em>tumbuh.</em></h1>
+    <p>Garuda One Basketball membuka percakapan dengan pihak yang ingin mendukung kegiatan basket usia muda dan komunitas klub.</p>
+  </section>
+  <section class="sponsor-body section-pad">
+    <div><span class="section-number">MENGENAL KLUB</span><h2>Komunitas di dalam<br />dan luar lapangan.</h2></div>
+    <div><p>Klub berbasis di {club.location}, dengan kelompok usia yang tercantum pada kanal resmi: {club.ages}. Kegiatan dan pertandingan klub terdokumentasi di Instagram.</p><p>Untuk profil kerja sama, materi sponsor, dan bentuk kolaborasi yang tersedia, hubungi tim klub secara langsung. Kami belum menampilkan angka jangkauan atau paket sponsorship yang belum diverifikasi.</p><div class="sponsor-actions"><a class="button button-dark" href={sponsorLink} target="_blank" rel="noopener noreferrer">Diskusikan kerja sama ↗</a><a class="inline-link" href={club.instagram} target="_blank" rel="noopener noreferrer">Lihat aktivitas klub ↗</a></div></div>
+  </section>
+</BaseLayout>
