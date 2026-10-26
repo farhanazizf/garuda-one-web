@@ -1,22 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { club, registrationLink } from '../data/club';
+import { club, clubMapsLinkProps, registrationLink, trainingLocationLine } from '../data/club';
 ---
 
-<BaseLayout title="Tentang Klub | Garuda One Basketball" description="Profil Garuda One Basketball, klub basket usia muda di Bintaro, Tangerang Selatan. Kenali kelompok usia dan hubungi admin untuk informasi latihan." path="/tentang/">
+<BaseLayout title="Tentang Klub | Garudaone Basketball" description="Profil Garudaone Basketball di Bintaro — kelompok usia, lokasi latihan, hubungi admin via WhatsApp." path="/tentang/">
   <section class="page-hero">
     <p class="eyebrow"><span class="eyebrow-line"></span> PROFIL KLUB</p>
-    <h1>Bergerak<br /><em>sebagai satu.</em></h1>
-    <p>Garuda One Basketball hadir untuk pemain usia muda di Bintaro, Tangerang Selatan. Semangat yang dibawa klub sederhana: <strong>{club.tagline}</strong>.</p>
+    <h1>Satu tim,<br /><em>satu gerak.</em></h1>
+    <p>Klub basket anak di Bintaro, Tangerang Selatan. Moto kami: <strong>{club.tagline}</strong>.</p>
   </section>
   <section class="facts-section section-pad">
-    <div class="section-topline"><span class="section-number">FAKTA KLUB</span><span>BERDASARKAN KANAL RESMI</span></div>
+    <div class="section-topline"><span class="section-number">FAKTA KLUB</span><span>INFO SINGKAT</span></div>
     <div class="facts-grid">
-      <div><span>01</span><h2>Lokasi</h2><p>{club.location}</p></div>
+      <div><span>01</span><h2>Lokasi</h2><p><a {...clubMapsLinkProps}>{trainingLocationLine} ↗</a></p></div>
       <div><span>02</span><h2>Kelompok usia</h2><p>{club.ages}</p></div>
-      <div><span>03</span><h2>Aktivitas</h2><p>Latihan, pertandingan, dan kegiatan komunitas basket.</p></div>
+      <div><span>03</span><h2>Aktivitas</h2><p>Latihan rutin, turnamen, dan kegiatan bareng orang tua & pemain.</p></div>
     </div>
-    <p class="source-note">Jadwal, tempat latihan, biaya, dan ketersediaan kelas dapat berubah. Admin klub memberikan informasi terbaru melalui WhatsApp.</p>
+    <p class="source-note">Jadwal, biaya, dan slot kelas bisa berubah — tanya admin lewat WhatsApp untuk info terbaru.</p>
   </section>
-  <section class="contact-band section-pad"><span class="section-number">INGIN BERGABUNG?</span><h2>Kenali kelompok latihan<br />yang tepat untuk anak Anda.</h2><a class="button button-gold" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya admin lewat WhatsApp ↗</a></section>
+  <section class="contact-band section-pad"><span class="section-number">INGIN BERGABUNG?</span><h2>Cari kelompok usia<br />yang cocok buat anak.</h2><a class="button button-gold" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya admin lewat WhatsApp ↗</a></section>
 </BaseLayout>
