@@ -7,13 +7,13 @@ Sumber diperiksa melalui profil Instagram resmi `@garudaonebasketball` di Comet 
 | Aset | Lokasi | Sumber | Status |
 | --- | --- | --- | --- |
 
-| gbl-2026.jpg | `public/media/gbl-2026.jpg` | [Post GBL](https://www.instagram.com/p/Dd0Ai8dPZQV/) | Preview 640px, Oktober 2026 |
 | ku14-black-yellow.jpg | `public/media/ku14-black-yellow.jpg` | [Post KU14](https://www.instagram.com/p/DetkSohn2ZT/) | Preview 640px |
 | kejurkot-ku10-2026.jpg | `public/media/kejurkot-ku10-2026.jpg` | [Post Kejurkot](https://www.instagram.com/p/DcGkfiBH1rk/) | Preview 640px |
 | reel-latihan-cover.jpg | `public/media/reel-latihan-cover.jpg` | [Reel latihan](https://www.instagram.com/reel/DeyCMv3PfLn/) | Thumbnail reels |
 | reel-pertandingan-cover.jpg | `public/media/reel-pertandingan-cover.jpg` | [Reel](https://www.instagram.com/reel/DewPr2iPggQ/) | Cadangan thumbnail |
 
 | Logo Garudaone Basketball, JPG 512 × 512 | `public/garuda-one-logo.jpg` | Lampiran yang dikirim pemilik di chat | Dipakai di situs |
+| GBL 2026 poster (carousel) | Embed di home + [post IG](https://www.instagram.com/p/Dd0Ai8dPZQV/) | Tidak dipakai sebagai thumbnail lokal — preview IG ter-crop persegi. |
 | Poster Garudaone Basketball League 2026 | Post [Dd0Ai8dPZQV](https://www.instagram.com/p/Dd0Ai8dPZQV/) | Instagram resmi, diposting 28 September 2026 | Ditampilkan sebagai embed Instagram agar tetap berasal dari post resmi; belum disimpan sebagai file lokal |
 
 ## Referensi konten yang dipakai
