@@ -22,7 +22,7 @@ const items = featuredClubMedia();
       items.map((item, index) => (
         <article class="moment-card">
           <span class="moment-index">{String(index + 1).padStart(2, '0')}</span>
-          {item.kind === 'local' && item.localPath ? (
+          {item.localReady && item.localPath ? (
             <a class="moment-media" href={item.href} target="_blank" rel="noopener noreferrer">
               <img src={withBase(item.localPath.replace(/^\//, ''))} alt={item.alt ?? item.title} width="640" height="480" loading="lazy" />
             </a>
