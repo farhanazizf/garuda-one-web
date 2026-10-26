@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ClubAchievements from '../components/ClubAchievements.astro';
+import ClubMoments from '../components/ClubMoments.astro';
 import { club, clubMapsLinkProps, registrationLink, trainingLocationLine } from '../data/club';
 ---
 
@@ -18,5 +20,7 @@ import { club, clubMapsLinkProps, registrationLink, trainingLocationLine } from 
     </div>
     <p class="source-note">Jadwal, biaya, dan slot kelas bisa berubah — tanya admin lewat WhatsApp untuk info terbaru.</p>
   </section>
+  <ClubAchievements variant="archive" />
+  <ClubMoments variant="archive" />
   <section class="contact-band section-pad"><span class="section-number">INGIN BERGABUNG?</span><h2>Cari kelompok usia<br />yang cocok buat anak.</h2><a class="button button-gold" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya admin lewat WhatsApp ↗</a></section>
 </BaseLayout>

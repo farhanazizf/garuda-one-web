@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MotionDirector from '../components/MotionDirector.jsx';
+import ClubAchievements from '../components/ClubAchievements.astro';
 import ClubMoments from '../components/ClubMoments.astro';
 import InstagramActivity from '../components/InstagramActivity.astro';
 import { club, clubMapsLinkProps, registrationLink, sponsorLink } from '../data/club';
@@ -39,6 +40,7 @@ import { withBase } from '../utils/paths';
     </div>
   </section>
 
+  <ClubAchievements />
   <ClubMoments />
 
   <section class="path-section section-pad" aria-labelledby="path-title">
