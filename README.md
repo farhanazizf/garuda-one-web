@@ -1,4 +1,4 @@
-# Garuda One Basketball website
+# Garudaone Basketball website
 
 Situs profil awal untuk orang tua dan sponsor, dengan WhatsApp sebagai jalur pendaftaran. Dibangun memakai Astro (berbasis Vite) agar halaman utama menghasilkan HTML statis. React dipakai hanya untuk pengarah animasi GSAP; isi utama tetap ada di HTML statis.
 
@@ -19,6 +19,14 @@ npm run build
 ```
 
 Saat domain resmi sudah dipilih, set `PUBLIC_SITE_URL=https://domain-resmi.example` pada lingkungan build untuk menghasilkan canonical URL, URL gambar sosial, dan URL di data terstruktur. Ganti `domain-resmi.example` dengan domain sebenarnya. Sitemap dapat diaktifkan setelah domain ditentukan.
+
+## Deploy (GitHub Pages)
+
+Push ke branch `main` menjalankan workflow `.github/workflows/deploy-pages.yml`. Situs project pages:
+
+**https://farhanazizf.github.io/garuda-one-web/**
+
+Build CI memakai `BASE_PATH=/garuda-one-web` dan `PUBLIC_SITE_URL` di atas. Preview lokal dengan path production: `BASE_PATH=/garuda-one-web PUBLIC_SITE_URL=https://farhanazizf.github.io/garuda-one-web npm run build && npm run preview`.
 
 ## Data yang masih dibutuhkan
 
