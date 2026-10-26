@@ -1,3 +1,6 @@
+import type { Locale } from '../i18n/locales';
+import { DEFAULT_LOCALE } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
 import { withBase } from '../utils/paths';
 
 export const club = {
@@ -6,7 +9,6 @@ export const club = {
   location: 'Bintaro, Tangerang Selatan',
   venueName: 'Brickhouse 2.0 Bintaro',
   mapsUrl: 'https://maps.app.goo.gl/bLivkTeCuW1qRHo79',
-  ages: '5–10 dan 12–18 tahun',
   phone: '6282115172019',
   instagram: 'https://www.instagram.com/garudaonebasketball/',
   logo: withBase('garuda-one-logo.jpg'),
@@ -24,13 +26,15 @@ export function whatsappLink(message: string) {
   return `https://wa.me/${club.phone}?text=${encodeURIComponent(message)}`;
 }
 
-export const registrationLink = whatsappLink(
-  'Halo Garudaone Basketball, saya mau tanya pendaftaran latihan untuk anak saya. Boleh info kelompok usia, jadwal, lokasi, dan biayanya? Terima kasih.'
-);
+export function registrationLink(locale: Locale = DEFAULT_LOCALE) {
+  const { wa } = getMessages(locale);
+  return whatsappLink(wa.registration);
+}
 
-export const partnershipLink = whatsappLink(
-  'Halo Garudaone Basketball, saya mau bahas kolaborasi/partnership. Bisa diarahkan ke kontak yang tepat? Terima kasih.'
-);
+export function partnershipLink(locale: Locale = DEFAULT_LOCALE) {
+  const { wa } = getMessages(locale);
+  return whatsappLink(wa.partnership);
+}
 
 /** @deprecated Pakai `partnershipLink` — alias untuk tautan lama. */
-export const sponsorLink = partnershipLink;
+export const sponsorLink = partnershipLink(DEFAULT_LOCALE);
