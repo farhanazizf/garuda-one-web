@@ -1,14 +1,17 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 import { club } from '../data/club';
-import {
-  instagramAchievement,
-  instagramBlockEmbed,
-  instagramBlockFacts,
-} from '../data/club-media';
+import { instagramBlockEmbed, instagramBlockFacts } from '../data/club-media';
+import { withBase } from '../utils/paths';
 
 const facts = instagramBlockFacts();
 const embed = instagramBlockEmbed();
-const achievement = instagramAchievement();
+const posterOnDisk =
+  embed?.localPath &&
+  fs.existsSync(path.join(process.cwd(), 'public', embed.localPath.replace(/^\//, '')));
+const showGblPoster = Boolean(embed?.localReady && embed.localPath && posterOnDisk);
 ---
 
 <section class="instagram-section section-pad" aria-labelledby="instagram-title">
@@ -41,41 +44,92 @@ const achievement = instagramAchievement();
       ))
     }
 
-    {
-      achievement ? (
-        <p class="instagram-result">
-          <strong>{achievement.caption}</strong> meraih perak di Kejurkot Tangsel 2026.{' '}
-          {achievement.href ? (
-            <a href={achievement.href} target="_blank" rel="noopener noreferrer">
-              Lihat di Instagram ↗
-            </a>
-          ) : null}
-        </p>
-      ) : null
-    }
   </div>
 
   {
     embed ? (
-      <div class="instagram-media" aria-label="Postingan Instagram resmi tentang Garudaone Basketball League 2026">
-        <iframe
-          src={embed.embedUrl}
-          title="Pengumuman Garudaone Basketball League 2026 dari Instagram resmi Garudaone Basketball"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowtransparency="true"
-          allowfullscreen
-        />
-        {embed.href ? (
-          <p>
-            Jika postingan tidak tampil,{' '}
-            <a href={embed.href} target="_blank" rel="noopener noreferrer">
-              buka langsung di Instagram ↗
-            </a>
-            .
-          </p>
-        ) : null}
+      <div class="instagram-media" aria-label="Garudaone Basketball League 2026">
+        {
+          showGblPoster ? (
+            <figure class="instagram-gbl-poster-wrap">
+              <a href={embed.href} target="_blank" rel="noopener noreferrer">
+                <img
+                  class="instagram-gbl-poster"
+                  src={withBase(embed.localPath!.replace(/^\//, ''))}
+                  alt={embed.alt ?? embed.title}
+                  width="1600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <figcaption>
+                Poster resmi GBL 2026.{' '}
+                {embed.href ? (
+                  <a href={embed.href} target="_blank" rel="noopener noreferrer">
+                    Buka carousel di Instagram ↗
+                  </a>
+                ) : null}
+              </figcaption>
+            </figure>
+          ) : (
+            <>
+              <iframe
+                src={embed.embedUrl}
+                title="Pengumuman Garudaone Basketball League 2026 dari Instagram resmi Garudaone Basketball"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowtransparency="true"
+                allowfullscreen
+              />
+              {embed.href ? (
+                <p>
+                  Jika postingan tidak tampil,{' '}
+                  <a href={embed.href} target="_blank" rel="noopener noreferrer">
+                    buka langsung di Instagram ↗
+                  </a>
+                  .
+                </p>
+              ) : null}
+            </>
+          )
+        }
       </div>
     ) : null
   }
 </section>
+
+<style>
+  .instagram-gbl-poster-wrap {
+    margin: 0;
+  }
+
+  .instagram-gbl-poster {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    background: #0c0c0b;
+  }
+
+  .instagram-gbl-poster-wrap figcaption {
+    margin: 0.75rem 0.25rem 0;
+    color: #68645d;
+    font-size: 0.74rem;
+    line-height: 1.5;
+  }
+
+  .instagram-gbl-poster-wrap figcaption a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  :global(.instagram-media:has(.instagram-gbl-poster)) {
+    padding: 0.75rem;
+  }
+
+  :global(.instagram-media:has(.instagram-gbl-poster) iframe) {
+    display: none;
+  }
+</style>
