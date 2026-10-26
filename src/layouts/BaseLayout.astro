@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { club, clubMapsLinkProps, registrationLink, trainingLocationLine } from '../data/club';
+import { absoluteSiteUrl, withBase } from '../utils/paths';
 
 interface Props {
   title: string;
@@ -10,7 +11,8 @@ interface Props {
 
 const { title, description, path = '/' } = Astro.props;
 const siteUrl = import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '');
-const canonical = siteUrl ? new URL(path, `${siteUrl}/`).toString() : undefined;
+const canonical = absoluteSiteUrl(siteUrl, path);
+const logoAbsolute = siteUrl ? `${siteUrl}/garuda-one-logo.jpg` : club.logo;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'SportsClub',
@@ -31,7 +33,7 @@ const schema = {
     hasMap: club.mapsUrl,
   },
   sameAs: [club.instagram],
-  ...(siteUrl ? { url: siteUrl, logo: `${siteUrl}${club.logo}` } : {}),
+  ...(siteUrl ? { url: siteUrl, logo: logoAbsolute } : {}),
 };
 ---
 
@@ -50,20 +52,20 @@ const schema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonical && <meta property="og:url" content={canonical} />}
-    {siteUrl && <meta property="og:image" content={`${siteUrl}${club.logo}`} />}
+    {logoAbsolute && <meta property="og:image" content={logoAbsolute} />}
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
     <a class="skip-link" href="#konten">Lewati ke konten</a>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Garudaone Basketball, beranda">
+      <a class="brand" href={withBase("")} aria-label="Garudaone Basketball, beranda">
         <img src={club.logo} alt="" width="56" height="56" />
         <span><span class="brand-accent">GARUDAONE</span><small>BASKETBALL</small></span>
       </a>
       <nav aria-label="Navigasi utama">
-        <a href="/">Beranda</a>
-        <a href="/tentang/">Tentang klub</a>
-        <a href="/sponsor/">Untuk sponsor</a>
+        <a href={withBase("")}>Beranda</a>
+        <a href={withBase("tentang/")}>Tentang klub</a>
+        <a href={withBase("sponsor/")}>Untuk sponsor</a>
         <a class="nav-location" {...clubMapsLinkProps}>Lokasi ↗</a>
       </nav>
       <a class="header-cta" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya pendaftaran <span aria-hidden="true">↗</span></a>

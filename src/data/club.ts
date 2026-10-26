@@ -1,3 +1,5 @@
+import { withBase } from '../utils/paths';
+
 export const club = {
   name: 'Garudaone Basketball',
   tagline: 'Together We Fly',
@@ -7,7 +9,7 @@ export const club = {
   ages: '5–10 dan 12–18 tahun',
   phone: '6282115172019',
   instagram: 'https://www.instagram.com/garudaonebasketball/',
-  logo: '/garuda-one-logo.jpg',
+  logo: withBase('garuda-one-logo.jpg'),
 } as const;
 
 export const trainingLocationLine = `${club.venueName} · ${club.location}`;
