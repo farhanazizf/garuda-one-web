@@ -1,16 +1,21 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { club, sponsorLink } from '../data/club';
+import { withBase } from '../utils/paths';
+
+const target = withBase('kolaborasi/');
 ---
 
-<BaseLayout title="Kerja Sama & Sponsor | Garudaone Basketball" description="Kerja sama & sponsor Garudaone Basketball, klub basket anak di Bintaro." path="/sponsor/">
-  <section class="page-hero sponsor-hero">
-    <p class="eyebrow"><span class="eyebrow-line"></span> UNTUK MITRA & SPONSOR</p>
-    <h1>Investasi di<br /><em>pemain muda.</em></h1>
-    <p>Garudaone Basketball terbuka untuk mitra yang mau dukung latihan, turnamen, dan komunitas klub.</p>
-  </section>
-  <section class="sponsor-body section-pad">
-    <div><span class="section-number">MENGENAL KLUB</span><h2>Di lapangan<br />dan di luar lapangan.</h2></div>
-    <div><p>Klub di {club.location}, pemain usia {club.ages}. Aktivitas kami aktif di Instagram.</p><p>Detail kerja sama dan materi sponsor kami bagikan langsung lewat percakapan — belum ada paket fixed di website.</p><div class="sponsor-actions"><a class="button button-dark" href={sponsorLink} target="_blank" rel="noopener noreferrer">Chat tim kami ↗</a><a class="inline-link" href={club.instagram} target="_blank" rel="noopener noreferrer">Lihat aktivitas klub ↗</a></div></div>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Mengalihkan ke Kolaborasi…</title>
+  </head>
+  <body>
+    <p>
+      Halaman ini pindah ke <a href={target}>Kolaborasi &amp; Partnership</a>.
+    </p>
+  </body>
+</html>

@@ -57,11 +57,6 @@ h1,h2,h3,p{margin-top:0}.hero h1,.page-hero h1{font-family:'Barlow Condensed',Im
 .faq-list details:hover{background:#eae3d6}
 .faq-list summary{font-size:1.08rem;line-height:1.35}
 .faq-list p{font-size:.94rem}
-.statement-panel{background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 38%),#aa936f}
-.statement-panel p{font-size:clamp(4.2rem,5vw,5rem);line-height:.85}
-.inline-logo{display:inline-flex;width:4rem;height:2.6rem;vertical-align:middle;overflow:hidden;border-radius:999px;background:#000;margin:0 .04em .08em;align-items:center;justify-content:center}
-.inline-logo img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);transition:transform .7s ease}
-.inline-logo:hover img{transform:scale(1.22)}
 .faq-preview{display:block;margin-top:1rem;color:#6a6257;font-size:.82rem;line-height:1.45;font-weight:500;letter-spacing:0}
 .home-contact{background:radial-gradient(circle at 78% 40%,rgba(195,164,114,.15),transparent 28%),#0c0c0b;min-height:520px}
 .home-contact h2{max-width:980px}
@@ -84,10 +79,10 @@ h1,h2,h3,p{margin-top:0}.hero h1,.page-hero h1{font-family:'Barlow Condensed',Im
 .instagram-media iframe{display:block;width:100%;height:680px;border:0;background:#0c0c0b}
 .instagram-media>p{margin:.75rem .25rem .25rem;color:#68645d;font-size:.74rem;line-height:1.5}
 .instagram-media a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:760px){.hero h1{font-size:clamp(3.3rem,10vw,4.6rem);max-width:100%}.club-marquee{height:56px}.club-marquee-track span{font-size:1.25rem}.faq-list{display:block;min-height:0}.faq-list details,.faq-list details:last-child{border-right:0;border-bottom:1px solid #aaa296;padding:1.4rem}.faq-list details:last-child{border-bottom:0}.faq-section h2{margin-bottom:2.5rem}.statement-panel p{font-size:clamp(3.5rem,10vw,5rem)}}
+@media(max-width:760px){.hero h1{font-size:clamp(3.3rem,10vw,4.6rem);max-width:100%}.club-marquee{height:56px}.club-marquee-track span{font-size:1.25rem}.faq-list{display:block;min-height:0}.faq-list details,.faq-list details:last-child{border-right:0;border-bottom:1px solid #aaa296;padding:1.4rem}.faq-list details:last-child{border-bottom:0}.faq-section h2{margin-bottom:2.5rem}}
 @media(max-width:760px){.instagram-section{grid-template-columns:1fr;gap:2.5rem}.instagram-copy h2{margin:2.8rem 0 1.2rem}.instagram-media{position:static}.instagram-media iframe{height:610px}}
-@media(max-width:420px){.hero h1{font-size:3.4rem}.home-contact .button{font-size:.65rem;gap:.8rem}.statement-panel p{font-size:3.5rem}.inline-logo{width:3rem;height:2rem}}
-@media(prefers-reduced-motion:reduce){.club-marquee-track{animation:none}.faq-list details,.brand img,.inline-logo img{transition:none}}
+@media(max-width:420px){.hero h1{font-size:3.4rem}.home-contact .button{font-size:.65rem;gap:.8rem}}
+@media(prefers-reduced-motion:reduce){.club-marquee-track{animation:none}.faq-list details,.brand img{transition:none}}
 
 .nav-location{color:#e8b864;opacity:1}.nav-location:hover{color:#fff}
 .footer-venue{margin-top:.65rem}.footer-venue a{color:#dbad5f;font-weight:700;text-decoration:underline;text-underline-offset:3px}.footer-venue a:hover{color:#f1c678}

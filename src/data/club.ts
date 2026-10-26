@@ -28,6 +28,9 @@ export const registrationLink = whatsappLink(
   'Halo Garudaone Basketball, saya mau tanya pendaftaran latihan untuk anak saya. Boleh info kelompok usia, jadwal, lokasi, dan biayanya? Terima kasih.'
 );
 
-export const sponsorLink = whatsappLink(
-  'Halo Garudaone Basketball, saya mau bahas kerja sama/sponsor. Bisa diarahkan ke kontak yang tepat? Terima kasih.'
+export const partnershipLink = whatsappLink(
+  'Halo Garudaone Basketball, saya mau bahas kolaborasi/partnership. Bisa diarahkan ke kontak yang tepat? Terima kasih.'
 );
+
+/** @deprecated Pakai `partnershipLink` — alias untuk tautan lama. */
+export const sponsorLink = partnershipLink;

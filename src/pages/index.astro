@@ -4,7 +4,7 @@ import MotionDirector from '../components/MotionDirector.jsx';
 import ClubAchievements from '../components/ClubAchievements.astro';
 import ClubMoments from '../components/ClubMoments.astro';
 import InstagramActivity from '../components/InstagramActivity.astro';
-import { club, clubMapsLinkProps, registrationLink, sponsorLink } from '../data/club';
+import { club, clubMapsLinkProps, registrationLink } from '../data/club';
 import { withBase } from '../utils/paths';
 ---
 
@@ -63,21 +63,11 @@ import { withBase } from '../utils/paths';
     </div>
   </section>
 
-  <section class="split-band" aria-labelledby="activity-title">
-    <div class="activity-panel">
-      <p class="section-number">AKTIVITAS KLUB</p>
-      <h2 id="activity-title">Latihan.<br />Pertandingan.<br /><em>Kebersamaan.</em></h2>
-      <p>Foto latihan, pertandingan, dan GBL ada di Instagram kami.</p>
-      <a class="inline-link light" href={club.instagram} target="_blank" rel="noopener noreferrer">Lihat Instagram <span aria-hidden="true">↗</span></a>
-    </div>
-    <div class="statement-panel"><p>TOGETHER <span class="inline-logo"><img src={club.logo} alt="" width="96" height="56" loading="lazy" /></span><br />WE FLY</p><span>GARUDAONE BASKETBALL</span></div>
-  </section>
-
   <InstagramActivity />
 
-  <section class="sponsor-teaser section-pad" aria-labelledby="sponsor-title">
-    <div><p class="section-number">KOLABORASI</p><h2 id="sponsor-title">Dukung generasi<br /><em>pemain muda.</em></h2></div>
-    <div><p>Mau sponsor atau kerja sama? Hubungi tim kami — kita bahas bentuk dukungannya.</p><a class="button button-outline" href={sponsorLink} target="_blank" rel="noopener noreferrer">Chat tentang kerja sama <span aria-hidden="true">↗</span></a></div>
+  <section class="sponsor-teaser section-pad" aria-labelledby="partnership-title">
+    <div><p class="section-number">KOLABORASI</p><h2 id="partnership-title">Partnership<br /><em>bareng klub.</em></h2></div>
+    <div><p>Brand, venue, event, atau dukungan komunitas — kita bahas bentuk kolaborasinya lewat WhatsApp.</p><a class="button button-outline" href={withBase("kolaborasi/")}>Info kolaborasi <span aria-hidden="true">↗</span></a></div>
   </section>
   <section class="contact-band section-pad home-contact" aria-labelledby="contact-title">
     <span class="section-number">MULAI BERSAMA</span>
