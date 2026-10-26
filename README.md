@@ -24,9 +24,9 @@ Saat domain resmi sudah dipilih, set `PUBLIC_SITE_URL=https://domain-resmi.examp
 
 - Jadwal dan lokasi latihan per kelompok usia, termasuk alamat yang disetujui untuk publik.
 - Biaya, prosedur pendaftaran, dan apakah ada kelas percobaan.
-- Foto asli yang disetujui untuk website, terutama karena subjeknya anak-anak.
+- Pilihan foto dan video dari akun Instagram yang akan disalin sebagai file lokal untuk website. Saat ini posting GBL 2026 ditampilkan sebagai embed resmi, sementara post lain ditautkan ke sumbernya.
 - Logo vektor atau PNG transparan; logo saat ini JPG 512 × 512 dengan latar hitam.
 - Profil pelatih, prestasi, testimoni, serta data sponsor yang telah disetujui dan dapat diverifikasi.
 - Domain resmi dan identitas organisasi yang ingin ditampilkan pada profil sponsor.
 
-Nomor WhatsApp diambil dari bio Instagram dan telah dikonfirmasi pengguna pada 26 Oktober 2026. Informasi lain di situs dirujuk dari Instagram klub dan direktori PERBASI Tangerang Selatan. Tidak ada formulir yang menyimpan data anak atau orang tua.
+Nomor WhatsApp diambil dari bio Instagram dan telah dikonfirmasi pengguna pada 26 Oktober 2026. Informasi aktivitas yang ditampilkan dirujuk dari akun resmi klub; daftar sumber dan status file aset ada di [ASSET_CATALOG.md](ASSET_CATALOG.md). Tidak ada formulir yang menyimpan data anak atau orang tua.

@@ -1,0 +1,47 @@
+---
+import { instagramContent } from '../data/instagram-content';
+---
+
+<section class="instagram-section section-pad" aria-labelledby="instagram-title">
+  <div class="instagram-copy">
+    <div class="section-topline">
+      <span class="section-number">DARI LAPANGAN</span>
+      <a href={instagramContent.profile} target="_blank" rel="noopener noreferrer">@garudaonebasketball ↗</a>
+    </div>
+    <h2 id="instagram-title">Cerita tim<br />terus <em>bergerak.</em></h2>
+    <p class="instagram-intro">Aktivitas dan kompetisi klub dibagikan melalui Instagram resmi. Ini beberapa catatan dari postingan yang sedang relevan.</p>
+
+    <article class="instagram-fact">
+      <span class="instagram-index">01</span>
+      <div>
+        <p class="instagram-kicker">GARUDAONE BASKETBALL LEAGUE 2026</p>
+        <h3>{instagramContent.league.venue} <span>·</span> {instagramContent.league.dateLabel}</h3>
+        <a href={instagramContent.league.postUrl} target="_blank" rel="noopener noreferrer">Buka pengumuman resmi <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+    <article class="instagram-fact">
+      <span class="instagram-index">02</span>
+      <div>
+        <p class="instagram-kicker">KOMPETISI & PENGEMBANGAN</p>
+        <h3>{instagramContent.teamPost.title}</h3>
+        <p class="instagram-quote">“{instagramContent.teamPost.caption}”</p>
+        <a href={instagramContent.teamPost.postUrl} target="_blank" rel="noopener noreferrer">Lihat dokumentasi tim <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+    <p class="instagram-result"><strong>{instagramContent.achievement.detail}</strong> meraih perak di Kejurkot Tangsel 2026. <a href={instagramContent.achievement.postUrl} target="_blank" rel="noopener noreferrer">Lihat kabar klub ↗</a></p>
+  </div>
+
+  <div class="instagram-media" aria-label="Postingan Instagram resmi tentang GarudaOne Basketball League 2026">
+    <iframe
+      src={instagramContent.league.embedUrl}
+      title="Pengumuman GarudaOne Basketball League 2026 dari Instagram resmi Garuda One Basketball"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowtransparency="true"
+      allowfullscreen
+    ></iframe>
+    <p>Jika postingan tidak tampil, <a href={instagramContent.league.postUrl} target="_blank" rel="noopener noreferrer">buka langsung di Instagram ↗</a>.</p>
+  </div>
+</section>

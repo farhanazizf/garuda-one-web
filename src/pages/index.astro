@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MotionDirector from '../components/MotionDirector.jsx';
+import InstagramActivity from '../components/InstagramActivity.astro';
 import { club, registrationLink, sponsorLink } from '../data/club';
 ---
 
@@ -65,6 +66,8 @@ import { club, registrationLink, sponsorLink } from '../data/club';
     </div>
     <div class="statement-panel"><p>TOGETHER <span class="inline-logo"><img src={club.logo} alt="" width="96" height="56" loading="lazy" /></span><br />WE FLY</p><span>GARUDA ONE BASKETBALL</span></div>
   </section>
+
+  <InstagramActivity />
 
   <section class="sponsor-teaser section-pad" aria-labelledby="sponsor-title">
     <div><p class="section-number">KOLABORASI</p><h2 id="sponsor-title">Bersama mendukung<br />langkah berikutnya.</h2></div>
