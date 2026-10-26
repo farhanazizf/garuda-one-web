@@ -1,7 +1,18 @@
 ---
 import { club } from '../data/club';
 import { instagramBlockEmbed, instagramBlockFacts } from '../data/club-media';
+import type { Locale } from '../i18n/locales';
+import { DEFAULT_LOCALE } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
 import { withBase } from '../utils/paths';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const ig = getMessages(locale).instagram;
+const shared = getMessages(locale).shared;
 
 const facts = instagramBlockFacts();
 const embed = instagramBlockEmbed();
@@ -11,11 +22,13 @@ const showGblPoster = Boolean(embed?.localReady && embed.localPath);
 <section class="instagram-section section-pad" aria-labelledby="instagram-title">
   <div class="instagram-copy">
     <div class="section-topline">
-      <span class="section-number">INSTAGRAM</span>
-      <a href={club.instagram} target="_blank" rel="noopener noreferrer">@garudaonebasketball ↗</a>
+      <span class="section-number">{ig.label}</span>
+      <a href={club.instagram} target="_blank" rel="noopener noreferrer"
+        >{ig.handleLink} {shared.mapsLinkSuffix}</a
+      >
     </div>
-    <h2 id="instagram-title">Kabar<br /><em>terbaru.</em></h2>
-    <p class="instagram-intro">Ringkasan dari postingan @garudaonebasketball — liga, tim, dan hasil pertandingan.</p>
+    <h2 id="instagram-title">{ig.title.before}<br /><em>{ig.title.emphasis}</em></h2>
+    <p class="instagram-intro">{ig.intro}</p>
 
     {
       facts.map((item, index) => (
@@ -29,8 +42,8 @@ const showGblPoster = Boolean(embed?.localReady && embed.localPath);
             ) : null}
             {item.href ? (
               <a href={item.href} target="_blank" rel="noopener noreferrer">
-                {item.id === 'ku14-black-yellow' ? 'Lihat postingan tim' : 'Lihat pengumuman GBL'}{' '}
-                <span aria-hidden="true">↗</span>
+                {item.id === 'ku14-black-yellow' ? ig.linkTeamPost : ig.linkGblAnnouncement}{' '}
+                <span aria-hidden="true">{shared.mapsLinkSuffix}</span>
               </a>
             ) : null}
           </div>
@@ -42,7 +55,7 @@ const showGblPoster = Boolean(embed?.localReady && embed.localPath);
 
   {
     embed ? (
-      <div class="instagram-media" aria-label="Garudaone Basketball League 2026">
+      <div class="instagram-media" aria-label={ig.gblMediaAria}>
         {
           showGblPoster ? (
             <figure class="instagram-gbl-poster-wrap">
@@ -58,10 +71,10 @@ const showGblPoster = Boolean(embed?.localReady && embed.localPath);
                 />
               </a>
               <figcaption>
-                Poster resmi GBL 2026.{' '}
+                {ig.gblPosterCaption}{' '}
                 {embed.href ? (
                   <a href={embed.href} target="_blank" rel="noopener noreferrer">
-                    Buka carousel di Instagram ↗
+                    {ig.gblOpenCarousel} {shared.mapsLinkSuffix}
                   </a>
                 ) : null}
               </figcaption>
@@ -70,7 +83,7 @@ const showGblPoster = Boolean(embed?.localReady && embed.localPath);
             <>
               <iframe
                 src={embed.embedUrl}
-                title="Pengumuman Garudaone Basketball League 2026 dari Instagram resmi Garudaone Basketball"
+                title={ig.embedTitle}
                 loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowtransparency="true"
@@ -78,11 +91,11 @@ const showGblPoster = Boolean(embed?.localReady && embed.localPath);
               />
               {embed.href ? (
                 <p>
-                  Jika postingan tidak tampil,{' '}
+                  {ig.embedFallbackBefore}{' '}
                   <a href={embed.href} target="_blank" rel="noopener noreferrer">
-                    buka langsung di Instagram ↗
+                    {ig.embedFallbackLink} {shared.mapsLinkSuffix}
                   </a>
-                  .
+                  {ig.embedFallbackAfter}
                 </p>
               ) : null}
             </>

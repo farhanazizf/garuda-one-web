@@ -6,14 +6,26 @@ import {
   instagramThumbFit,
   momentsGridMedia,
 } from '../data/club-media';
+import type { Locale } from '../i18n/locales';
+import { DEFAULT_LOCALE } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
+import { localePagePath } from '../i18n/paths';
 import { withBase } from '../utils/paths';
 
 interface Props {
+  locale?: Locale;
   /** `highlight` = max 6 di homepage; `archive` = daftar lengkap */
   variant?: 'highlight' | 'archive';
 }
 
-const { variant = 'highlight' } = Astro.props;
+const { locale = DEFAULT_LOCALE, variant = 'highlight' } = Astro.props;
+const t = getMessages(locale).moments;
+const shared = getMessages(locale).shared;
+
+function fmt(template: string, vars: Record<string, string | number>) {
+  return template.replace(/\{(\w+)\}/g, (_, key: string) => String(vars[key] ?? `{${key}}`));
+}
+
 const isArchive = variant === 'archive';
 const all = momentsGridMedia();
 const items = isArchive ? all : homeMomentsMedia();
@@ -26,37 +38,36 @@ const total = all.length;
   id={isArchive ? 'aktivitas-klub' : undefined}
 >
   <div class="moments-heading">
-    <span class="section-number">{isArchive ? 'ARSIP' : 'HIGHLIGHT'}</span>
+    <span class="section-number">{isArchive ? t.labelArchive : t.labelHighlight}</span>
     {
       isArchive ? (
         <h2 id="activity-archive-title">
-          Aktivitas &<br /><em>dokumentasi.</em>
+          {t.archiveTitle.before}<br /><em>{t.archiveTitle.emphasis}</em>
         </h2>
       ) : (
         <h2 id="moments-title">
-          Latihan &<br /><em>pertandingan.</em>
+          {t.highlightTitle.before}<br /><em>{t.highlightTitle.emphasis}</em>
         </h2>
       )
     }
     {
       isArchive ? (
-        <p class="moments-intro">
-          {total} momen latihan, pertandingan, dan kegiatan tim — tanpa arsip juara/medali (itu di section prestasi). Klik
-          kartu untuk buka postingan aslinya.
-        </p>
+        <>
+          <p class="moments-intro">{fmt(t.archiveIntro, { total })}</p>
+          {t.igNote ? <p class="moments-ig-note">{t.igNote}</p> : null}
+        </>
       ) : (
-        <p class="moments-intro">
-          Enam cuplikan terbaru dari latihan dan pertandingan.
-        </p>
+        <p class="moments-intro">{t.highlightIntro}</p>
       )
     }
     <p class="moments-venue">
-      Latihan di <a {...clubMapsLinkProps}>{club.venueName} ↗</a>
+      {t.venuePrefix}{' '}
+      <a {...clubMapsLinkProps}>{club.venueName} {shared.mapsLinkSuffix}</a>
     </p>
     {
       !isArchive && total > items.length ? (
-        <a class="moments-more inline-link" href={withBase('tentang/#aktivitas-klub')}>
-          Lihat aktivitas lain di profil klub <span aria-hidden="true">↗</span>
+        <a class="moments-more inline-link" href={`${localePagePath(locale, 'about')}#aktivitas-klub`}>
+          {t.moreLink} <span aria-hidden="true">{shared.mapsLinkSuffix}</span>
         </a>
       ) : null
     }
@@ -99,7 +110,7 @@ const total = all.length;
               {item.caption ? <p class="moment-caption">{item.caption}</p> : null}
               {item.href ? (
                 <a href={item.href} target="_blank" rel="noopener noreferrer">
-                  Buka postingan <span aria-hidden="true">↗</span>
+                  {shared.openPost} <span aria-hidden="true">{shared.mapsLinkSuffix}</span>
                 </a>
               ) : null}
             </div>
@@ -114,6 +125,14 @@ const total = all.length;
   .moments-more {
     display: inline-block;
     margin-top: 0.5rem;
+  }
+
+  .moments-ig-note {
+    max-width: 520px;
+    color: #68645d;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin: 0.5rem 0 0;
   }
 
   .moments-section .moments-grid {

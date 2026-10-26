@@ -1,18 +1,29 @@
 ---
-import { club } from '../data/club';
 import {
   achievementsGridMedia,
   homeAchievementsMedia,
   instagramThumbDimensions,
   instagramThumbFit,
 } from '../data/club-media';
+import type { Locale } from '../i18n/locales';
+import { DEFAULT_LOCALE } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
+import { localePagePath } from '../i18n/paths';
 import { withBase } from '../utils/paths';
 
 interface Props {
+  locale?: Locale;
   variant?: 'highlight' | 'archive';
 }
 
-const { variant = 'highlight' } = Astro.props;
+const { locale = DEFAULT_LOCALE, variant = 'highlight' } = Astro.props;
+const t = getMessages(locale).achievements;
+const shared = getMessages(locale).shared;
+
+function fmt(template: string, vars: Record<string, string | number>) {
+  return template.replace(/\{(\w+)\}/g, (_, key: string) => String(vars[key] ?? `{${key}}`));
+}
+
 const isArchive = variant === 'archive';
 const all = achievementsGridMedia();
 const items = isArchive ? all : homeAchievementsMedia();
@@ -25,33 +36,29 @@ const total = all.length;
   id={isArchive ? 'prestasi-klub' : undefined}
 >
   <div class="achievements-heading">
-    <span class="section-number">PRESTASI</span>
+    <span class="section-number">{t.label}</span>
     {
       isArchive ? (
         <h2 id="achievements-archive-title">
-          Pencapaian<br /><em>tim.</em>
+          {t.archiveTitle.before}<br /><em>{t.archiveTitle.emphasis}</em>
         </h2>
       ) : (
         <h2 id="achievements-title">
-          Juara &<br /><em>medali.</em>
+          {t.highlightTitle.before}<br /><em>{t.highlightTitle.emphasis}</em>
         </h2>
       )
     }
     {
       isArchive ? (
-        <p class="achievements-intro">
-          {total} momen prestasi dari turnamen dan kompetisi — dokumentasi resmi dari Instagram klub.
-        </p>
+        <p class="achievements-intro">{fmt(t.archiveIntro, { total })}</p>
       ) : (
-        <p class="achievements-intro">
-          Enam pencapaian terbaru {club.name}.
-        </p>
+        <p class="achievements-intro">{t.highlightIntro}</p>
       )
     }
     {
       !isArchive && total > items.length ? (
-        <a class="achievements-more inline-link" href={withBase('tentang/#prestasi-klub')}>
-          Lihat prestasi lain di profil klub <span aria-hidden="true">↗</span>
+        <a class="achievements-more inline-link" href={`${localePagePath(locale, 'about')}#prestasi-klub`}>
+          {t.moreLink} <span aria-hidden="true">{shared.mapsLinkSuffix}</span>
         </a>
       ) : null
     }
@@ -93,7 +100,7 @@ const total = all.length;
             {item.sourceDate ? <p class="achievement-date">{item.sourceDate}</p> : null}
             {item.href ? (
               <a href={item.href} target="_blank" rel="noopener noreferrer">
-                Buka postingan <span aria-hidden="true">↗</span>
+                {shared.openPost} <span aria-hidden="true">{shared.mapsLinkSuffix}</span>
               </a>
             ) : null}
           </div>
