@@ -1,44 +1,180 @@
 ---
 import { club, clubMapsLinkProps } from '../data/club';
-import { featuredClubMedia } from '../data/club-media';
+import {
+  homeMomentsMedia,
+  instagramThumbDimensions,
+  instagramThumbFit,
+  momentsGridMedia,
+} from '../data/club-media';
 import { withBase } from '../utils/paths';
 
-const items = featuredClubMedia();
+interface Props {
+  /** `highlight` = max 6 di homepage; `archive` = daftar lengkap */
+  variant?: 'highlight' | 'archive';
+}
+
+const { variant = 'highlight' } = Astro.props;
+const isArchive = variant === 'archive';
+const all = momentsGridMedia();
+const items = isArchive ? all : homeMomentsMedia();
+const total = all.length;
 ---
 
-<section class="moments-section section-pad" aria-labelledby="moments-title">
+<section
+  class:list={['moments-section', 'section-pad', isArchive && 'moments-section--archive']}
+  aria-labelledby={isArchive ? 'activity-archive-title' : 'moments-title'}
+  id={isArchive ? 'aktivitas-klub' : undefined}
+>
   <div class="moments-heading">
-    <span class="section-number">HIGHLIGHT</span>
-    <h2 id="moments-title">Latihan &<br /><em>pertandingan.</em></h2>
-    <p class="moments-intro">
-      Foto dan update tim kami rutin di Instagram. Klik kartu di samping untuk lihat postingan aslinya.
-    </p>
+    <span class="section-number">{isArchive ? 'ARSIP' : 'HIGHLIGHT'}</span>
+    {
+      isArchive ? (
+        <h2 id="activity-archive-title">
+          Aktivitas &<br /><em>dokumentasi.</em>
+        </h2>
+      ) : (
+        <h2 id="moments-title">
+          Latihan &<br /><em>pertandingan.</em>
+        </h2>
+      )
+    }
+    {
+      isArchive ? (
+        <p class="moments-intro">
+          {total} momen latihan, pertandingan, dan kegiatan tim — tanpa arsip juara/medali (itu di section prestasi). Klik
+          kartu untuk buka postingan aslinya.
+        </p>
+      ) : (
+        <p class="moments-intro">
+          Enam cuplikan terbaru dari latihan dan pertandingan.
+        </p>
+      )
+    }
     <p class="moments-venue">
       Latihan di <a {...clubMapsLinkProps}>{club.venueName} ↗</a>
     </p>
+    {
+      !isArchive && total > items.length ? (
+        <a class="moments-more inline-link" href={withBase('tentang/#aktivitas-klub')}>
+          Lihat aktivitas lain di profil klub <span aria-hidden="true">↗</span>
+        </a>
+      ) : null
+    }
   </div>
   <div class="moments-grid">
     {
-      items.map((item, index) => (
-        <article class="moment-card">
-          <span class="moment-index">{String(index + 1).padStart(2, '0')}</span>
-          {item.localReady && item.localPath ? (
-            <a class="moment-media" href={item.href} target="_blank" rel="noopener noreferrer">
-              <img src={withBase(item.localPath.replace(/^\//, ''))} alt={item.alt ?? item.title} width="640" height="480" loading="lazy" />
-            </a>
-          ) : null}
-          <div class="moment-body">
-            {item.kicker ? <p class="moment-kicker">{item.kicker}</p> : null}
-            <h3>{item.title}</h3>
-            {item.caption ? <p class="moment-caption">{item.caption}</p> : null}
-            {item.href ? (
-              <a href={item.href} target="_blank" rel="noopener noreferrer">
-                Buka postingan <span aria-hidden="true">↗</span>
-              </a>
-            ) : null}
-          </div>
-        </article>
-      ))
+      items.map((item, index) => {
+        const thumb = instagramThumbDimensions(item);
+        const fit = instagramThumbFit(item);
+        const isReel = item.href?.includes('/reel/');
+        return (
+          <article class="moment-card">
+            <span class="moment-index">{String(index + 1).padStart(2, '0')}</span>
+            <div class="moment-media-slot">
+              {item.localReady && item.localPath ? (
+                <a
+                  class="moment-media"
+                  data-ig-frame={isReel ? 'reel' : 'post'}
+                  style={`--ig-fit: ${fit}`}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={withBase(item.localPath.replace(/^\//, ''))}
+                    alt={item.alt ?? item.title}
+                    width={thumb.width}
+                    height={thumb.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              ) : (
+                <div class="moment-media" aria-hidden="true" />
+              )}
+            </div>
+            <div class="moment-body">
+              {item.kicker ? <p class="moment-kicker">{item.kicker}</p> : null}
+              <h3>{item.title}</h3>
+              {item.caption ? <p class="moment-caption">{item.caption}</p> : null}
+              {item.href ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  Buka postingan <span aria-hidden="true">↗</span>
+                </a>
+              ) : null}
+            </div>
+          </article>
+        );
+      })
     }
   </div>
 </section>
+
+<style>
+  .moments-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+
+  .moments-section .moments-grid {
+    align-items: stretch;
+  }
+
+  .moment-card {
+    height: 100%;
+  }
+
+  /* Satu tinggi slot media per baris — judul kartu sejajar meski campur reel + foto */
+  .moment-media-slot {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    flex-shrink: 0;
+    margin-bottom: 0.35rem;
+    background: #ddd6c8;
+  }
+
+  .moment-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-height: 0;
+  }
+
+  .moment-card .moment-media {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #c9c0b2;
+  }
+
+  .moment-card .moment-media[data-ig-frame='post'] img {
+    object-fit: contain;
+  }
+
+  .moment-card .moment-media[data-ig-frame='reel'] img {
+    object-fit: cover;
+  }
+
+  .moment-card .moment-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: var(--ig-fit, cover);
+    object-position: center center;
+  }
+
+  @media (min-width: 1080px) {
+    .moments-section .moments-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .moments-section--archive {
+    background: #eee9dd;
+  }
+</style>
