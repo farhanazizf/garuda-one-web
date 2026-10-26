@@ -1,0 +1,102 @@
+---
+import { getMessages } from '../i18n/messages';
+import { localePagePath } from '../i18n/paths';
+import type { Locale, PageSlug } from '../i18n/locales';
+
+interface Props {
+  locale: Locale;
+  page: PageSlug;
+}
+
+const { locale, page } = Astro.props;
+const layout = getMessages(locale).layout;
+const idHref = localePagePath('id', page);
+const enHref = localePagePath('en', page);
+
+const idLabel = 'Bahasa Indonesia';
+const enLabel = 'English';
+---
+
+<div class="lang-switch" role="group" aria-label={layout.langSwitchLabel}>
+  {
+    locale === 'id' ? (
+      <span class="lang-switch-seg is-active" aria-current="true" lang="id" aria-label={idLabel}>ID</span>
+    ) : (
+      <a
+        class="lang-switch-seg"
+        href={idHref}
+        hreflang="id"
+        lang="id"
+        rel="alternate"
+        aria-label={idLabel}
+      >
+        ID
+      </a>
+    )
+  }
+  {
+    locale === 'en' ? (
+      <span class="lang-switch-seg is-active" aria-current="true" lang="en" aria-label={enLabel}>EN</span>
+    ) : (
+      <a
+        class="lang-switch-seg"
+        href={enHref}
+        hreflang="en"
+        lang="en"
+        rel="alternate"
+        aria-label={enLabel}
+      >
+        EN
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .lang-switch {
+    display: inline-flex;
+    align-items: stretch;
+    flex-shrink: 0;
+    border: 1px solid #a38d6b;
+    background: #141412;
+    line-height: 1;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .lang-switch-seg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.35rem;
+    min-height: 2.1rem;
+    padding: 0.5rem 0.55rem;
+    text-decoration: none;
+    color: #8f897f;
+    transition:
+      background 0.22s ease,
+      color 0.22s ease;
+  }
+
+  .lang-switch-seg + .lang-switch-seg {
+    border-left: 1px solid #4a453c;
+  }
+
+  .lang-switch-seg.is-active {
+    background: #dbad5f;
+    color: #0c0c0b;
+    cursor: default;
+  }
+
+  .lang-switch-seg:not(.is-active):hover {
+    background: #1a1917;
+    color: #f3f0e8;
+  }
+
+  .lang-switch-seg:focus-visible {
+    outline: 2px solid #d9a42f;
+    outline-offset: -2px;
+    z-index: 1;
+  }
+</style>

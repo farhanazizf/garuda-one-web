@@ -1,23 +1,35 @@
 ---
 import '../styles/global.css';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import { club, clubMapsLinkProps, registrationLink, trainingLocationLine } from '../data/club';
+import type { Locale, PageSlug } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
+import { localeCanonicalPath, localePagePath } from '../i18n/paths';
 import { absoluteSiteUrl, withBase } from '../utils/paths';
 
 interface Props {
+  locale: Locale;
+  page: PageSlug;
   title: string;
   description: string;
-  path?: string;
 }
 
-const { title, description, path = '/' } = Astro.props;
+const { locale, page, title, description } = Astro.props;
+const messages = getMessages(locale);
+const L = messages.layout;
+const regLink = registrationLink(locale);
+const ogLocale = locale === 'en' ? 'en_US' : 'id_ID';
+const altLocale: Locale = locale === 'id' ? 'en' : 'id';
 const siteUrl = import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '');
-const canonical = absoluteSiteUrl(siteUrl, path);
+const canonicalPath = localeCanonicalPath(locale, page);
+const canonical = absoluteSiteUrl(siteUrl, canonicalPath);
+const altCanonical = siteUrl ? absoluteSiteUrl(siteUrl, localeCanonicalPath(altLocale, page)) : null;
 const logoAbsolute = siteUrl ? `${siteUrl}/garuda-one-logo.jpg` : club.logo;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'SportsClub',
   name: club.name,
-  description: 'Klub basket usia muda di Bintaro, Tangerang Selatan.',
+  description: L.schemaDescription,
   telephone: '+62 821-1517-2019',
   areaServed: 'Tangerang Selatan',
   sport: 'Basketball',
@@ -38,7 +50,7 @@ const schema = {
 ---
 
 <!doctype html>
-<html lang="id">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,8 +61,21 @@ const schema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
+    {
+      altCanonical && (
+        <>
+          <link rel="alternate" hreflang={locale} href={canonical} />
+          <link rel="alternate" hreflang={altLocale} href={altCanonical} />
+          <link
+            rel="alternate"
+            hreflang="x-default"
+            href={absoluteSiteUrl(siteUrl, localeCanonicalPath('id', page))}
+          />
+        </>
+      )
+    }
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="id_ID" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content={club.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -59,19 +84,41 @@ const schema = {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
-    <a class="skip-link" href="#konten">Lewati ke konten</a>
+    <a class="skip-link" href="#konten">{L.skipToContent}</a>
     <header class="site-header">
-      <a class="brand" href={withBase("")} aria-label="Garudaone Basketball, beranda">
+      <a class="brand" href={localePagePath(locale, 'home')} aria-label={L.brandAriaLabel}>
         <img src={club.logo} alt="" width="56" height="56" />
         <span><span class="brand-accent">GARUDAONE</span><small>BASKETBALL</small></span>
       </a>
-      <nav aria-label="Navigasi utama">
-        <a href={withBase("")}>Beranda</a>
-        <a href={withBase("tentang/")}>Tentang klub</a>
-        <a href={withBase("kolaborasi/")}>Kolaborasi</a>
-        <a class="nav-location" {...clubMapsLinkProps}>Lokasi ↗</a>
+      <nav aria-label={L.navAriaLabel}>
+        <a
+          class:list={['nav-link', page === 'home' && 'nav-link--current']}
+          href={localePagePath(locale, 'home')}
+          aria-current={page === 'home' ? 'page' : undefined}
+        >
+          {L.navHome}
+        </a>
+        <a
+          class:list={['nav-link', page === 'about' && 'nav-link--current']}
+          href={localePagePath(locale, 'about')}
+          aria-current={page === 'about' ? 'page' : undefined}
+        >
+          {L.navAbout}
+        </a>
+        <a
+          class:list={['nav-link', page === 'partnership' && 'nav-link--current']}
+          href={localePagePath(locale, 'partnership')}
+          aria-current={page === 'partnership' ? 'page' : undefined}
+        >
+          {L.navPartnership}
+        </a>
+        <a class="nav-link nav-location" {...clubMapsLinkProps}
+          >{L.navLocation} {messages.shared.mapsLinkSuffix}</a
+        >
       </nav>
-      <a class="header-cta" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya pendaftaran <span aria-hidden="true">↗</span></a>
+      <a class="header-cta" href={regLink} target="_blank" rel="noopener noreferrer">
+        {L.headerCta} <span aria-hidden="true">{messages.shared.mapsLinkSuffix}</span>
+      </a>
     </header>
     <main id="konten" class="page-shell"><slot /></main>
     <footer class="site-footer">
@@ -79,15 +126,72 @@ const schema = {
         <p class="footer-name">GARUDAONE<br />BASKETBALL</p>
         <p>{club.tagline} · {club.location}</p>
         <p class="footer-venue">
-          Latihan: <a {...clubMapsLinkProps}>{trainingLocationLine} ↗</a>
+          {L.footerTraining}{' '}
+          <a {...clubMapsLinkProps}>{trainingLocationLine} {messages.shared.mapsLinkSuffix}</a>
         </p>
       </div>
       <div class="footer-links">
-        <a {...clubMapsLinkProps}>Google Maps ↗</a>
-        <a href={club.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-        <a href={registrationLink} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+        <a {...clubMapsLinkProps}>{L.footerMaps} {messages.shared.mapsLinkSuffix}</a>
+        <a href={club.instagram} target="_blank" rel="noopener noreferrer"
+          >{L.footerInstagram} {messages.shared.mapsLinkSuffix}</a
+        >
+        <a href={regLink} target="_blank" rel="noopener noreferrer"
+          >{L.footerWhatsapp} {messages.shared.mapsLinkSuffix}</a
+        >
       </div>
-      <p class="footer-note">Jadwal tiap kelompok dan biaya — konfirmasi lewat WhatsApp admin.</p>
+      <div class="footer-lang">
+        <LanguageSwitcher locale={locale} page={page} />
+      </div>
+      <p class="footer-note">{L.footerNote}</p>
     </footer>
   </body>
 </html>
+
+<style>
+  .footer-lang {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+  }
+
+  :global(.site-header nav .nav-link) {
+    position: relative;
+    opacity: 0.65;
+    color: #d8d4cc;
+    padding-bottom: 0.2rem;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  :global(.site-header nav .nav-link:hover) {
+    opacity: 1;
+    color: #f3f0e8;
+  }
+
+  :global(.site-header nav .nav-link--current) {
+    opacity: 1;
+    color: #dbad5f;
+  }
+
+  :global(.site-header nav .nav-link--current::after) {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.15rem;
+    height: 2px;
+    background: #dbad5f;
+    border-radius: 1px;
+  }
+
+  :global(.site-header nav .nav-location) {
+    opacity: 0.82;
+    color: #c7b18f;
+  }
+
+  :global(.site-header nav .nav-location:hover) {
+    color: #e8b864;
+  }
+</style>
