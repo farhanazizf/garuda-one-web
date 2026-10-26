@@ -1,26 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ClubAchievements from '../components/ClubAchievements.astro';
-import ClubMoments from '../components/ClubMoments.astro';
-import { club, clubMapsLinkProps, registrationLink, trainingLocationLine } from '../data/club';
+import AboutPage from '../views/AboutPage.astro';
 ---
-
-<BaseLayout title="Tentang Klub | Garudaone Basketball" description="Profil Garudaone Basketball di Bintaro — kelompok usia, lokasi latihan, hubungi admin via WhatsApp." path="/tentang/">
-  <section class="page-hero">
-    <p class="eyebrow"><span class="eyebrow-line"></span> PROFIL KLUB</p>
-    <h1>Satu tim,<br /><em>satu gerak.</em></h1>
-    <p>Klub basket anak di Bintaro, Tangerang Selatan. Moto kami: <strong>{club.tagline}</strong>.</p>
-  </section>
-  <section class="facts-section section-pad">
-    <div class="section-topline"><span class="section-number">FAKTA KLUB</span><span>INFO SINGKAT</span></div>
-    <div class="facts-grid">
-      <div><span>01</span><h2>Lokasi</h2><p><a {...clubMapsLinkProps}>{trainingLocationLine} ↗</a></p></div>
-      <div><span>02</span><h2>Kelompok usia</h2><p>{club.ages}</p></div>
-      <div><span>03</span><h2>Aktivitas</h2><p>Latihan rutin, turnamen, dan kegiatan bareng orang tua & pemain.</p></div>
-    </div>
-    <p class="source-note">Jadwal, biaya, dan slot kelas bisa berubah — tanya admin lewat WhatsApp untuk info terbaru.</p>
-  </section>
-  <ClubAchievements variant="archive" />
-  <ClubMoments variant="archive" />
-  <section class="contact-band section-pad"><span class="section-number">INGIN BERGABUNG?</span><h2>Cari kelompok usia<br />yang cocok buat anak.</h2><a class="button button-gold" href={registrationLink} target="_blank" rel="noopener noreferrer">Tanya admin lewat WhatsApp ↗</a></section>
-</BaseLayout>
+<AboutPage locale="id" />

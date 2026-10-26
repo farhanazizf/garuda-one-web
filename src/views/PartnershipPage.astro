@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { club, partnershipLink } from '../data/club';
+import type { Locale } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const m = getMessages(locale).partnership;
+const shared = getMessages(locale).shared;
+const partnerLink = partnershipLink(locale);
+
+function fmt(template: string, vars: Record<string, string | number>) {
+  return template.replace(/\{(\w+)\}/g, (_, key: string) => String(vars[key] ?? `{${key}}`));
+}
+---
+
+<BaseLayout locale={locale} page="partnership" title={m.metaTitle} description={m.metaDescription}>
+  <section class="page-hero sponsor-hero">
+    <p class="eyebrow"><span class="eyebrow-line"></span> {m.heroEyebrow}</p>
+    <h1>{m.heroTitle.before}<br /><em>{m.heroTitle.emphasis}</em></h1>
+    <p>{m.heroLead}</p>
+  </section>
+  <section class="sponsor-body section-pad">
+    <div>
+      <span class="section-number">{m.bodyLabel}</span>
+      <h2>{m.bodyTitle.before}<br />{m.bodyTitle.emphasis}</h2>
+    </div>
+    <div>
+      <p>{fmt(m.bodyP1, { location: club.location, ages: shared.ages })}</p>
+      <p>{m.bodyP2}</p>
+      <div class="sponsor-actions">
+        <a class="button button-dark" href={partnerLink} target="_blank" rel="noopener noreferrer">
+          {m.ctaWhatsapp} {shared.mapsLinkSuffix}
+        </a>
+        <a class="inline-link" href={club.instagram} target="_blank" rel="noopener noreferrer">
+          {m.ctaInstagram} {shared.mapsLinkSuffix}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

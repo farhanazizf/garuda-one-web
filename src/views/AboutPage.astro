@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ClubAchievements from '../components/ClubAchievements.astro';
+import ClubMoments from '../components/ClubMoments.astro';
+import { clubMapsLinkProps, registrationLink, trainingLocationLine } from '../data/club';
+import type { Locale } from '../i18n/locales';
+import { getMessages } from '../i18n/messages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const m = getMessages(locale).about;
+const shared = getMessages(locale).shared;
+const regLink = registrationLink(locale);
+---
+
+<BaseLayout locale={locale} page="about" title={m.metaTitle} description={m.metaDescription}>
+  <section class="page-hero page-hero--club-brand" aria-labelledby="about-hero-title">
+    <h1 id="about-hero-title">
+      TOGETHER WE FLY,<br /><em>GARUDAONE BASKETBALL</em>
+    </h1>
+  </section>
+  <section class="facts-section section-pad">
+    <div class="section-topline">
+      <span class="section-number">{m.factsLabel}</span><span>{m.factsAside}</span>
+    </div>
+    <div class="facts-grid">
+      <div>
+        <span>01</span><h2>{m.factLocationTitle}</h2>
+        <p><a {...clubMapsLinkProps}>{trainingLocationLine} {shared.mapsLinkSuffix}</a></p>
+      </div>
+      <div>
+        <span>02</span><h2>{m.factAgesTitle}</h2><p>{shared.ages}</p>
+      </div>
+      <div>
+        <span>03</span><h2>{m.factActivityTitle}</h2><p>{m.factActivityBody}</p>
+      </div>
+    </div>
+    <p class="source-note">{m.sourceNote}</p>
+  </section>
+  <ClubAchievements locale={locale} variant="archive" />
+  <ClubMoments locale={locale} variant="archive" />
+  <section class="contact-band section-pad">
+    <span class="section-number">{m.contactLabel}</span>
+    <h2>{m.contactTitle}</h2>
+    <a class="button button-gold" href={regLink} target="_blank" rel="noopener noreferrer">
+      {m.contactCta} {shared.mapsLinkSuffix}
+    </a>
+  </section>
+</BaseLayout>
