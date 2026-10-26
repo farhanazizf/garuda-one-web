@@ -1,17 +1,11 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
-
 import { club } from '../data/club';
 import { instagramBlockEmbed, instagramBlockFacts } from '../data/club-media';
 import { withBase } from '../utils/paths';
 
 const facts = instagramBlockFacts();
 const embed = instagramBlockEmbed();
-const posterOnDisk =
-  embed?.localPath &&
-  fs.existsSync(path.join(process.cwd(), 'public', embed.localPath.replace(/^\//, '')));
-const showGblPoster = Boolean(embed?.localReady && embed.localPath && posterOnDisk);
+const showGblPoster = Boolean(embed?.localReady && embed.localPath);
 ---
 
 <section class="instagram-section section-pad" aria-labelledby="instagram-title">
