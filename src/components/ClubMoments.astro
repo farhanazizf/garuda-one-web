@@ -1,0 +1,43 @@
+---
+import { club, clubMapsLinkProps } from '../data/club';
+import { featuredClubMedia } from '../data/club-media';
+
+const items = featuredClubMedia();
+---
+
+<section class="moments-section section-pad" aria-labelledby="moments-title">
+  <div class="moments-heading">
+    <span class="section-number">HIGHLIGHT</span>
+    <h2 id="moments-title">Latihan &<br /><em>pertandingan.</em></h2>
+    <p class="moments-intro">
+      Foto dan update tim kami rutin di Instagram. Klik kartu di samping untuk lihat postingan aslinya.
+    </p>
+    <p class="moments-venue">
+      Latihan di <a {...clubMapsLinkProps}>{club.venueName} ↗</a>
+    </p>
+  </div>
+  <div class="moments-grid">
+    {
+      items.map((item, index) => (
+        <article class="moment-card">
+          <span class="moment-index">{String(index + 1).padStart(2, '0')}</span>
+          {item.kind === 'local' && item.localPath ? (
+            <a class="moment-media" href={item.href} target="_blank" rel="noopener noreferrer">
+              <img src={item.localPath} alt={item.alt ?? item.title} width="640" height="480" loading="lazy" />
+            </a>
+          ) : null}
+          <div class="moment-body">
+            {item.kicker ? <p class="moment-kicker">{item.kicker}</p> : null}
+            <h3>{item.title}</h3>
+            {item.caption ? <p class="moment-caption">{item.caption}</p> : null}
+            {item.href ? (
+              <a href={item.href} target="_blank" rel="noopener noreferrer">
+                Buka postingan <span aria-hidden="true">↗</span>
+              </a>
+            ) : null}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
