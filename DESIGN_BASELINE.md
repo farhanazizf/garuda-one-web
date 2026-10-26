@@ -1,4 +1,4 @@
-# Baseline UI Garuda One Basketball
+# Baseline UI Garudaone Basketball
 
 Baseline ini menerapkan `gpt-taste` dengan penyesuaian pada tujuan klub: pendaftaran melalui WhatsApp, profil resmi untuk orang tua dan sponsor, serta penggunaan aset yang benar-benar berasal dari klub. Desain saat ini disukai pengguna dan menjadi titik awal untuk perubahan berikutnya.
 
