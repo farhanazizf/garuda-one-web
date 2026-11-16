@@ -34,7 +34,7 @@ export const en: SiteMessages = {
   home: {
     metaTitle: 'Garudaone Basketball | Youth Basketball Club in Bintaro',
     metaDescription:
-      'Garudaone Basketball — kids basketball in Bintaro. Training info and registration via WhatsApp.',
+      'A youth basketball club in Bintaro, South Tangerang. Explore activities, achievements, training, and registration at Garudaone Basketball.',
     heroEyebrow: 'YOUTH BASKETBALL CLUB · BINTARO',
     heroTitle: { before: 'Grow together.', emphasis: 'Together We Fly' },
     heroIntro: 'On the court, kids learn skills, try boldly, and train as a team.',

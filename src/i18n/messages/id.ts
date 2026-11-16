@@ -34,7 +34,7 @@ export const id: SiteMessages = {
   home: {
     metaTitle: 'Garudaone Basketball | Klub Basket Usia Muda di Bintaro',
     metaDescription:
-      'Garudaone Basketball — klub basket anak di Bintaro. Info latihan dan pendaftaran lewat WhatsApp.',
+      'Klub basket anak dan remaja di Bintaro, Tangerang Selatan. Lihat aktivitas, prestasi, program latihan, dan info pendaftaran Garudaone Basketball.',
     heroEyebrow: 'KLUB BASKET USIA MUDA · BINTARO',
     heroTitle: { before: 'Tumbuh bersama.', emphasis: 'Together We Fly' },
     heroIntro: 'Di lapangan anak belajar teknik, berani coba, dan latihan bareng tim.',

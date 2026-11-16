@@ -25,6 +25,7 @@ const canonicalPath = localeCanonicalPath(locale, page);
 const canonical = absoluteSiteUrl(siteUrl, canonicalPath);
 const altCanonical = siteUrl ? absoluteSiteUrl(siteUrl, localeCanonicalPath(altLocale, page)) : null;
 const logoAbsolute = siteUrl ? `${siteUrl}/garuda-one-logo.jpg` : club.logo;
+const socialImage = siteUrl ? absoluteSiteUrl(siteUrl, '/garudaone-share-card.jpg') : undefined;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'SportsClub',
@@ -87,7 +88,27 @@ const schema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonical && <meta property="og:url" content={canonical} />}
-    {logoAbsolute && <meta property="og:image" content={logoAbsolute} />}
+    {
+      socialImage && (
+        <>
+          <meta property="og:image" content={socialImage} />
+          <meta property="og:image:secure_url" content={socialImage} />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta
+            property="og:image:alt"
+            content={locale === 'en'
+              ? 'Garudaone Basketball logo and Together We Fly club message'
+              : 'Logo Garudaone Basketball dan pesan klub Together We Fly'}
+          />
+        </>
+      )
+    }
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
