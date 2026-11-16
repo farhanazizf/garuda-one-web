@@ -12,6 +12,8 @@ Postingan 10–11 November 2026 menambahkan empat hasil GBL 2.0. Preview persegi
 | GBL 2.0 2026 · Runner-up KU10 Mix | `public/media/gbl-2026-ku10-runner-up.jpg` | [Post runner-up KU10](https://www.instagram.com/garudaonebasketball/p/DfldPX8n3Cu/) · 11 Nov 2026 | Cover lokal 1080 × 1080 |
 | GBL 2.0 2026 · Runner-up KU12 Putri | `public/media/gbl-2026-ku12-putri-runner-up.jpg` | [Post runner-up KU12 Putri](https://www.instagram.com/garudaonebasketball/p/Dflbbw_H246/) · 10 Nov 2026 | Cover lokal 1080 × 1080 |
 | GBL 2.0 2026 · Peringkat ketiga KU14 Putra | `public/media/gbl-2026-ku14-third-place.jpg` | [Post peringkat ketiga KU14](https://www.instagram.com/garudaonebasketball/p/DflarcAHxic/) · 10 Nov 2026 | Cover lokal 1080 × 1080 |
+| Latihan tanding KU14 Putra vs Galaxy Star Bogor | `public/media/friendly-match-ku14-vs-galaxy-star-2026-11.jpg` | [Reel KU14](https://www.instagram.com/garudaonebasketball/reel/DfyOG-Yvrqf/) · 15 Nov 2026 | Cover reel lokal 360 × 640 |
+| Latihan tanding KU10 Mix vs Galaxy Star Bogor | `public/media/friendly-match-ku10-mix-vs-galaxy-star-2026-11.jpg` | [Reel KU10 Mix](https://www.instagram.com/garudaonebasketball/reel/DfyNMt3PcjF/) · 15 Nov 2026 | Cover reel lokal 361 × 640 |
 
 | Aset | Lokasi | Sumber | Status |
 | --- | --- | --- | --- |
@@ -37,13 +39,15 @@ Postingan 10–11 November 2026 menambahkan empat hasil GBL 2.0. Preview persegi
 | Runner-up GBL 2.0 2026 · KU12 Putri | [Instagram](https://www.instagram.com/garudaonebasketball/p/Dflbbw_H246/) |
 | Peringkat ketiga GBL 2.0 2026 · KU14 Putra | [Instagram](https://www.instagram.com/garudaonebasketball/p/DflarcAHxic/) |
 
-Pemeriksaan profil publik terbaru dilakukan pada 16 November 2026. Dua Reels pada 15 November membahas friendly match KU14 Putra dan KU10 Mix vs. Galaxy Star Bogor, bukan hasil kejuaraan, sehingga tidak dihitung sebagai prestasi.
+Pemeriksaan profil publik terbaru dilakukan pada 16 November 2026. Dua Reels pada 15 November menampilkan latihan tanding KU14 Putra dan KU10 Mix melawan Galaxy Star Bogor. Keduanya ditampilkan di bagian aktivitas, bukan sebagai hasil kejuaraan.
 
 ## Aset yang terlihat di profil
 
 Profil menampilkan 12 highlight, antara lain kelompok KU16, KU14, KU12, KU10, KU8, member, kompetisi, kegiatan Ramadhan, dan dokumentasi Timnas Arhan. Cover highlight dan arsip foto/video belum disalin ke repo. Profil memiliki 231 postingan saat diperiksa; katalog ini memilih materi yang relevan untuk profil klub dan bukan arsip lengkap seluruh postingan.
 
 Empat cover hasil GBL 2.0 di atas disimpan lokal dari posting akun resmi, dengan tautan kembali ke sumber Instagram. Aset tersebut dipakai pada homepage dan arsip prestasi.
+
+Dua cover latihan tanding juga disimpan lokal dari thumbnail Reel resmi; kartu aktivitas menautkan kembali ke masing-masing Reel.
 
 ## Menambah foto lokal (fase A)
 

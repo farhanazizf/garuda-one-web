@@ -36,7 +36,7 @@ export const id: SiteMessages = {
     metaDescription:
       'Garudaone Basketball — klub basket anak di Bintaro. Info latihan dan pendaftaran lewat WhatsApp.',
     heroEyebrow: 'KLUB BASKET USIA MUDA · BINTARO',
-    heroTitle: { before: 'Tumbuh bersama.', emphasis: 'Terbang tinggi.' },
+    heroTitle: { before: 'Tumbuh bersama.', emphasis: 'Together We Fly' },
     heroIntro: 'Di lapangan anak belajar teknik, berani coba, dan latihan bareng tim.',
     heroCtaRegister: 'Tanya pendaftaran',
     heroCtaAbout: 'Kenali klub',
@@ -111,7 +111,7 @@ export const id: SiteMessages = {
       'Brand, venue, event, atau dukungan komunitas — kita bahas bentuk kolaborasinya lewat WhatsApp.',
     partnershipTeaserCta: 'Info kolaborasi',
     contactLabel: 'MULAI BERSAMA',
-    contactTitle: { before: 'Tanya dulu,', emphasis: 'baru putuskan.' },
+    contactTitle: { before: 'Jadwal latihan', emphasis: 'dan cara mendaftar.' },
     contactCta: 'Chat admin lewat WhatsApp',
   },
   about: {

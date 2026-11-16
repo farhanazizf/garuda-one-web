@@ -36,7 +36,7 @@ export const en: SiteMessages = {
     metaDescription:
       'Garudaone Basketball — kids basketball in Bintaro. Training info and registration via WhatsApp.',
     heroEyebrow: 'YOUTH BASKETBALL CLUB · BINTARO',
-    heroTitle: { before: 'Grow together.', emphasis: 'Fly high.' },
+    heroTitle: { before: 'Grow together.', emphasis: 'Together We Fly' },
     heroIntro: 'On the court, kids learn skills, try boldly, and train as a team.',
     heroCtaRegister: 'Ask about registration',
     heroCtaAbout: 'Meet the club',

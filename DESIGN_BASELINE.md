@@ -5,7 +5,8 @@ Baseline ini menerapkan `gpt-taste` dengan penyesuaian pada tujuan klub: pendaft
 ## Keputusan visual
 
 - Komposisi hero editorial split: judul dan dua aksi di kiri, logo asli di kanan. Judul dibatasi dua baris di desktop dan maksimum tiga baris pada layar ponsel yang diuji.
-- Geist untuk teks antarmuka; Barlow Condensed dipertahankan untuk judul olahraga yang sudah cocok dengan karakter logo.
+- Sistem tipografi memakai Teko untuk judul dan aksen angka, dengan Barlow untuk navigasi dan isi. Display yang tinggi dan condensed memberi ritme seperti papan skor; teks isi tetap punya bentuk yang lapang dan mudah dibaca.
+- Arah tipografinya mengambil karakter umum desain olahraga, bukan menyalin font atau wordmark Adidas/Nike. Logo Garuda One tetap menjadi identitas utama.
 - Palet hitam, putih gading, dan beige/emas dari logo. Merah dari materi GBL tidak dipakai sebagai warna utama situs sampai statusnya dikonfirmasi.
 - Tidak memakai foto stok sebagai foto atlet atau aktivitas klub. Foto resmi dapat dimasukkan setelah aset dan izin publikasi tersedia.
 - Alur halaman: perhatian melalui hero, informasi klub dan langkah bergabung, aktivitas serta FAQ, lalu ajakan WhatsApp yang jelas.

@@ -78,6 +78,12 @@ const total = all.length;
         const thumb = instagramThumbDimensions(item);
         const fit = instagramThumbFit(item);
         const isReel = item.href?.includes('/reel/');
+        const isEnglish = locale === 'en';
+        const kicker = isEnglish ? item.kickerEn ?? item.kicker : item.kicker;
+        const title = isEnglish ? item.titleEn ?? item.title : item.title;
+        const caption = isEnglish ? item.captionEn ?? item.caption : item.caption;
+        const alt = isEnglish ? item.altEn ?? item.alt ?? title : item.alt ?? title;
+        const sourceDate = isEnglish ? item.sourceDateEn ?? item.sourceDate : item.sourceDate;
         return (
           <article class="moment-card">
             <span class="moment-index">{String(index + 1).padStart(2, '0')}</span>
@@ -93,7 +99,7 @@ const total = all.length;
                 >
                   <img
                     src={withBase(item.localPath.replace(/^\//, ''))}
-                    alt={item.alt ?? item.title}
+                    alt={alt}
                     width={thumb.width}
                     height={thumb.height}
                     loading="lazy"
@@ -105,9 +111,10 @@ const total = all.length;
               )}
             </div>
             <div class="moment-body">
-              {item.kicker ? <p class="moment-kicker">{item.kicker}</p> : null}
-              <h3>{item.title}</h3>
-              {item.caption ? <p class="moment-caption">{item.caption}</p> : null}
+              {kicker ? <p class="moment-kicker">{kicker}</p> : null}
+              <h3>{title}</h3>
+              {caption ? <p class="moment-caption">{caption}</p> : null}
+              {sourceDate ? <p class="moment-date">{sourceDate}</p> : null}
               {item.href ? (
                 <a href={item.href} target="_blank" rel="noopener noreferrer">
                   {shared.openPost} <span aria-hidden="true">{shared.mapsLinkSuffix}</span>
@@ -195,5 +202,12 @@ const total = all.length;
 
   .moments-section--archive {
     background: #eee9dd;
+  }
+
+  .moment-date {
+    color: #706a60;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin: 0;
   }
 </style>
