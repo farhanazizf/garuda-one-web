@@ -563,18 +563,6 @@ export const clubMedia: ClubMediaItem[] = [
     alt: 'Postingan HUT RI Garudaone Basketball',
     featured: false,
   },
-  {
-    id: 'hiring-coach-brickhouse',
-    kind: 'link',
-    kicker: 'Info klub',
-    title: 'Rekrutmen coach · Brickhouse Bintaro',
-    caption: 'Lowongan coach basket — CV ke admin klub.',
-    href: 'https://www.instagram.com/p/DccnyiZPqL7/',
-    localPath: 'media/latihan-brickhouse.jpg',
-    localReady: true,
-    alt: 'Info rekrutmen coach di Brickhouse Bintaro',
-    featured: false,
-  },
 ];
 
 /** Proporsi frame kartu — selaras feed IG (post 4:5, reel vertikal 9:16). */
