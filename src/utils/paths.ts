@@ -10,6 +10,6 @@ export function withBase(path: string): string {
 export function absoluteSiteUrl(siteUrl: string | undefined, pathname: string): string | undefined {
   if (!siteUrl) return undefined;
   const origin = siteUrl.replace(/\/$/, '');
-  if (pathname === '/' || pathname === '') return origin;
+  if (pathname === '/' || pathname === '') return `${origin}/`;
   return `${origin}${pathname.startsWith('/') ? pathname : `/${pathname}`}`;
 }

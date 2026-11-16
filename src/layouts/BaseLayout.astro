@@ -45,7 +45,7 @@ const schema = {
     hasMap: club.mapsUrl,
   },
   sameAs: [club.instagram],
-  ...(siteUrl ? { url: siteUrl, logo: logoAbsolute } : {}),
+  ...(siteUrl ? { '@id': `${siteUrl}/#club`, url: siteUrl, logo: logoAbsolute } : {}),
 };
 ---
 
@@ -64,6 +64,7 @@ const schema = {
     <link rel="icon" type="image/png" sizes="32x32" href={withBase('favicon-32x32.png')} />
     <link rel="icon" type="image/png" sizes="16x16" href={withBase('favicon-16x16.png')} />
     <link rel="apple-touch-icon" sizes="180x180" href={withBase('apple-touch-icon.png')} />
+    <link rel="sitemap" type="application/xml" href={withBase('sitemap.xml')} />
     <title>{title}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
