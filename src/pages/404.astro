@@ -1,0 +1,323 @@
+---
+import '../styles/global.css';
+import { club, registrationLink } from '../data/club';
+import { withBase } from '../utils/paths';
+
+const home = withBase('');
+const englishHome = withBase('en/');
+const registration = registrationLink('id');
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0c0b" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Teko:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('favicon-32x32.png')} />
+    <title>404 — Halaman tidak ditemukan | Garudaone Basketball</title>
+    <meta
+      name="description"
+      content="Halaman yang Anda cari tidak tersedia. Kembali ke beranda Garudaone Basketball di Bintaro."
+    />
+  </head>
+  <body class="not-found-page">
+    <a class="skip-link" href="#main-content">Lewati ke konten</a>
+
+    <header class="not-found-header">
+      <a class="brand" href={home} aria-label="Garudaone Basketball, beranda">
+        <img src={club.logo} alt="" width="58" height="58" />
+        <span><span class="brand-accent">GARUDAONE</span><small>BASKETBALL</small></span>
+      </a>
+      <p class="not-found-location">BINTARO · TANGERANG SELATAN</p>
+      <a class="not-found-home" href={home}>Beranda <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main-content" class="not-found-main">
+      <section class="not-found-copy" aria-labelledby="not-found-title">
+        <p class="not-found-eyebrow"><span aria-hidden="true"></span> GARUDAONE BASKETBALL · 404</p>
+        <p class="not-found-code" aria-hidden="true">404</p>
+        <h1 id="not-found-title">Halaman tidak<br />ditemukan.</h1>
+        <p class="not-found-message">
+          Alamat ini tidak mengarah ke halaman yang tersedia. Kembali ke beranda untuk melihat profil klub,
+          aktivitas, dan info pendaftaran.
+        </p>
+        <div class="not-found-actions">
+          <a class="button button-gold" href={home}>
+            Kembali ke beranda <span aria-hidden="true">↗</span>
+          </a>
+          <a class="text-link" href={registration} target="_blank" rel="noopener noreferrer">
+            Tanya admin di WhatsApp <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <p class="not-found-signoff">TOGETHER WE FLY · GARUDAONE BASKETBALL</p>
+      </section>
+
+      <div class="not-found-photo">
+        <img
+          src={withBase('media/friendly-match-ku10-mix-vs-galaxy-star-2026-11.jpg')}
+          alt="Pemain KU10 Mix Garudaone berkumpul di lapangan sebelum pertandingan persahabatan."
+          width="361"
+          height="640"
+          fetchpriority="high"
+        />
+      </div>
+    </main>
+
+    <footer class="not-found-footer">
+      <a href={club.instagram} target="_blank" rel="noopener noreferrer">Instagram klub ↗</a>
+      <a href={englishHome} hreflang="en" lang="en">English site ↗</a>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .not-found-page {
+    min-height: 100vh;
+    color: #f3f0e8;
+    background: #0c0c0b;
+  }
+
+  .not-found-header {
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 clamp(1.25rem, 4vw, 4.5rem);
+    border-bottom: 1px solid #292724;
+  }
+
+  .not-found-header .brand {
+    min-width: 0;
+  }
+
+  .not-found-location {
+    margin: 0 0 0 auto;
+    color: #aaa39a;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  .not-found-home,
+  .not-found-footer a {
+    color: #dbad5f;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-underline-offset: 0.3rem;
+  }
+
+  .not-found-home span {
+    margin-left: 0.35rem;
+  }
+
+  .not-found-main {
+    width: min(100%, 1440px);
+    min-height: calc(100svh - 150px);
+    margin: 0 auto;
+    padding: clamp(3.5rem, 7vw, 7rem) clamp(1.25rem, 7vw, 8rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
+    align-items: center;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .not-found-copy {
+    max-width: 650px;
+  }
+
+  .not-found-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+    color: #c7b18f;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+  }
+
+  .not-found-eyebrow span {
+    width: 1.5rem;
+    height: 2px;
+    background: #dbad5f;
+  }
+
+  .not-found-code {
+    margin: 0 0 1.4rem;
+    color: #dbad5f;
+    font-family: var(--font-display), Impact, sans-serif;
+    font-size: clamp(8rem, 15vw, 13rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.68;
+  }
+
+  .not-found-copy h1 {
+    max-width: 620px;
+    margin: 0 0 1.4rem;
+    color: #f3f0e8;
+    font-family: var(--font-display), Impact, sans-serif;
+    font-size: clamp(3.5rem, 5.4vw, 5.3rem);
+    font-weight: 700;
+    letter-spacing: 0.005em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .not-found-message {
+    max-width: 510px;
+    margin: 0;
+    color: #c9c4bd;
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .not-found-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .not-found-actions .button {
+    transition: transform 0.18s ease, background-color 0.18s ease;
+  }
+
+  .not-found-actions .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .not-found-actions .text-link {
+    color: #e4b96e;
+  }
+
+  .not-found-signoff {
+    margin: 4rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid #403d37;
+    color: #9d968b;
+    font-size: 0.63rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  .not-found-photo {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    justify-self: end;
+    overflow: hidden;
+    border: 1px solid #544a3b;
+    background: #201b15;
+  }
+
+  .not-found-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 90%;
+  }
+
+  .not-found-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem clamp(1.25rem, 7vw, 8rem) 1.5rem;
+    border-top: 1px solid #292724;
+  }
+
+  .not-found-footer a:hover,
+  .not-found-home:hover {
+    color: #f1c678;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 760px) {
+    .not-found-header {
+      min-height: 78px;
+      gap: 1rem;
+      padding: 0 1.25rem;
+    }
+
+    .not-found-header .brand img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .not-found-location {
+      display: none;
+    }
+
+    .not-found-main {
+      min-height: 0;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 4rem 1.25rem 3.5rem;
+    }
+
+    .not-found-code {
+      font-size: clamp(7rem, 28vw, 10rem);
+    }
+
+    .not-found-copy h1 {
+      font-size: clamp(3.4rem, 13vw, 5rem);
+    }
+
+    .not-found-actions {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .not-found-signoff {
+      margin-top: 3rem;
+    }
+
+    .not-found-photo {
+      width: min(100%, 440px);
+      justify-self: center;
+      aspect-ratio: 1 / 1;
+    }
+
+    .not-found-photo img {
+      object-position: center 90%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .not-found-header .brand {
+      gap: 0.4rem;
+      font-size: 1.2rem;
+    }
+
+    .not-found-header .brand img {
+      width: 42px;
+      height: 42px;
+    }
+
+    .not-found-home {
+      font-size: 0.62rem;
+    }
+
+    .not-found-footer a {
+      font-size: 0.6rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .not-found-actions .button {
+      transition: none;
+    }
+  }
+</style>
