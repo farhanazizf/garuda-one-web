@@ -4,9 +4,13 @@ export type ClubMediaItem = {
   id: string;
   kind: ClubMediaKind;
   title: string;
+  titleEn?: string;
   kicker?: string;
+  kickerEn?: string;
   caption?: string;
+  captionEn?: string;
   alt?: string;
+  altEn?: string;
   href?: string;
   embedUrl?: string;
   localPath?: string;
@@ -19,6 +23,7 @@ export type ClubMediaItem = {
   featuredAchievement?: boolean;
   showInInstagramBlock?: boolean;
   sourceDate?: string;
+  sourceDateEn?: string;
   /** Override frame CSS aspect-ratio bila preview IG bukan 4:5 (mis. 1:1). */
   previewFrame?: string;
 };
@@ -38,6 +43,90 @@ export const clubMedia: ClubMediaItem[] = [
     sourceDate: '28 September 2026',
     featured: true,
     showInInstagramBlock: true,
+  },
+  {
+    id: 'gbl-2026-ku16-champions',
+    kind: 'link',
+    kicker: 'Juara · KU16 Putra',
+    kickerEn: 'Champions · KU16 Boys',
+    title: 'GBL 2.0 2026 · KU16 Putra',
+    titleEn: 'GBL 2.0 2026 · KU16 Boys',
+    caption: 'Medali emas — kampiun Garudaone Basketball League 2.0.',
+    captionEn: 'Gold medalists at the Garudaone Basketball League 2.0.',
+    href: 'https://www.instagram.com/garudaonebasketball/p/DflewmAnxpt/',
+    localPath: 'media/gbl-2026-ku16-champions.jpg',
+    localReady: true,
+    alt: 'Tim KU16 Putra Garuda One Basketball merayakan gelar juara GBL 2.0 2026.',
+    altEn: 'Garuda One Basketball KU16 boys celebrate their GBL 2.0 2026 championship.',
+    featured: false,
+    achievement: true,
+    featuredAchievement: true,
+    previewFrame: '1 / 1',
+    sourceDate: '11 November 2026',
+    sourceDateEn: 'November 11, 2026',
+  },
+  {
+    id: 'gbl-2026-ku10-runner-up',
+    kind: 'link',
+    kicker: 'Runner-up · KU10 Mix',
+    kickerEn: 'Runner-up · KU10 Mixed',
+    title: 'GBL 2.0 2026 · KU10 Mix',
+    titleEn: 'GBL 2.0 2026 · KU10 Mixed',
+    caption: 'Medali perak — posisi kedua pada GBL 2.0 2026.',
+    captionEn: 'Silver medalists — second place at GBL 2.0 2026.',
+    href: 'https://www.instagram.com/garudaonebasketball/p/DfldPX8n3Cu/',
+    localPath: 'media/gbl-2026-ku10-runner-up.jpg',
+    localReady: true,
+    alt: 'Tim KU10 Mix Garuda One Basketball menerima medali runner-up GBL 2.0 2026.',
+    altEn: 'Garuda One Basketball KU10 mixed team receive their GBL 2.0 2026 runner-up medals.',
+    featured: false,
+    achievement: true,
+    featuredAchievement: true,
+    previewFrame: '1 / 1',
+    sourceDate: '11 November 2026',
+    sourceDateEn: 'November 11, 2026',
+  },
+  {
+    id: 'gbl-2026-ku12-putri-runner-up',
+    kind: 'link',
+    kicker: 'Runner-up · KU12 Putri',
+    kickerEn: 'Runner-up · KU12 Girls',
+    title: 'GBL 2.0 2026 · KU12 Putri',
+    titleEn: 'GBL 2.0 2026 · KU12 Girls',
+    caption: 'Medali perak — posisi kedua pada GBL 2.0 2026.',
+    captionEn: 'Silver medalists — second place at GBL 2.0 2026.',
+    href: 'https://www.instagram.com/garudaonebasketball/p/Dflbbw_H246/',
+    localPath: 'media/gbl-2026-ku12-putri-runner-up.jpg',
+    localReady: true,
+    alt: 'Tim KU12 Putri Garuda One Basketball merayakan posisi runner-up GBL 2.0 2026.',
+    altEn: 'Garuda One Basketball KU12 girls celebrate their GBL 2.0 2026 runner-up finish.',
+    featured: false,
+    achievement: true,
+    featuredAchievement: true,
+    previewFrame: '1 / 1',
+    sourceDate: '10 November 2026',
+    sourceDateEn: 'November 10, 2026',
+  },
+  {
+    id: 'gbl-2026-ku14-third-place',
+    kind: 'link',
+    kicker: 'Peringkat Ketiga · KU14 Putra',
+    kickerEn: 'Third Place · KU14 Boys',
+    title: 'GBL 2.0 2026 · KU14 Putra',
+    titleEn: 'GBL 2.0 2026 · KU14 Boys',
+    caption: 'Medali perunggu — posisi ketiga di GBL 2.0 2026.',
+    captionEn: 'Bronze medalists — third place at GBL 2.0 2026.',
+    href: 'https://www.instagram.com/garudaonebasketball/p/DflarcAHxic/',
+    localPath: 'media/gbl-2026-ku14-third-place.jpg',
+    localReady: true,
+    alt: 'Tim KU14 Putra Garuda One Basketball merayakan peringkat ketiga GBL 2.0 2026.',
+    altEn: 'Garuda One Basketball KU14 boys celebrate their third-place GBL 2.0 2026 finish.',
+    featured: false,
+    achievement: true,
+    featuredAchievement: true,
+    previewFrame: '1 / 1',
+    sourceDate: '10 November 2026',
+    sourceDateEn: 'November 10, 2026',
   },
   {
     id: 'rising-league-ku15',

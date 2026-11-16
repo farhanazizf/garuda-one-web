@@ -4,6 +4,15 @@ Sumber diperiksa melalui profil Instagram resmi `@garudaonebasketball` di Comet 
 
 ## Aset yang tersedia di repo
 
+Postingan 10–11 November 2026 menambahkan empat hasil GBL 2.0. Preview persegi 1080 × 1080 di bawah disimpan lokal dari post Instagram resmi agar homepage dan arsip tetap bisa dimuat tanpa embed.
+
+| Aset | Lokasi | Sumber | Status |
+| --- | --- | --- | --- |
+| GBL 2.0 2026 · Juara KU16 Putra | `public/media/gbl-2026-ku16-champions.jpg` | [Post juara KU16](https://www.instagram.com/garudaonebasketball/p/DflewmAnxpt/) · 11 Nov 2026 | Cover lokal 1080 × 1080 |
+| GBL 2.0 2026 · Runner-up KU10 Mix | `public/media/gbl-2026-ku10-runner-up.jpg` | [Post runner-up KU10](https://www.instagram.com/garudaonebasketball/p/DfldPX8n3Cu/) · 11 Nov 2026 | Cover lokal 1080 × 1080 |
+| GBL 2.0 2026 · Runner-up KU12 Putri | `public/media/gbl-2026-ku12-putri-runner-up.jpg` | [Post runner-up KU12 Putri](https://www.instagram.com/garudaonebasketball/p/Dflbbw_H246/) · 10 Nov 2026 | Cover lokal 1080 × 1080 |
+| GBL 2.0 2026 · Peringkat ketiga KU14 Putra | `public/media/gbl-2026-ku14-third-place.jpg` | [Post peringkat ketiga KU14](https://www.instagram.com/garudaonebasketball/p/DflarcAHxic/) · 10 Nov 2026 | Cover lokal 1080 × 1080 |
+
 | Aset | Lokasi | Sumber | Status |
 | --- | --- | --- | --- |
 
@@ -23,12 +32,18 @@ Sumber diperiksa melalui profil Instagram resmi `@garudaonebasketball` di Comet 
 | GBL 2026 di Sola Sport BSD, 4 Oktober–7 November 2026 | [Pengumuman GBL](https://www.instagram.com/p/Dd0Ai8dPZQV/) |
 | KU14 Putra Black × Yellow; “Five on the court, one heart in the game.” | [Post tim KU14](https://www.instagram.com/p/DetkSohn2ZT/) |
 | Perak Kejurkot Tangsel 2026 untuk KU10 Mix | [Profil Instagram resmi](https://www.instagram.com/garudaonebasketball/) |
+| Juara GBL 2.0 2026 · KU16 Putra | [Instagram](https://www.instagram.com/garudaonebasketball/p/DflewmAnxpt/) |
+| Runner-up GBL 2.0 2026 · KU10 Mix | [Instagram](https://www.instagram.com/garudaonebasketball/p/DfldPX8n3Cu/) |
+| Runner-up GBL 2.0 2026 · KU12 Putri | [Instagram](https://www.instagram.com/garudaonebasketball/p/Dflbbw_H246/) |
+| Peringkat ketiga GBL 2.0 2026 · KU14 Putra | [Instagram](https://www.instagram.com/garudaonebasketball/p/DflarcAHxic/) |
+
+Pemeriksaan profil publik terbaru dilakukan pada 16 November 2026. Dua Reels pada 15 November membahas friendly match KU14 Putra dan KU10 Mix vs. Galaxy Star Bogor, bukan hasil kejuaraan, sehingga tidak dihitung sebagai prestasi.
 
 ## Aset yang terlihat di profil
 
 Profil menampilkan 12 highlight, antara lain kelompok KU16, KU14, KU12, KU10, KU8, member, kompetisi, kegiatan Ramadhan, dan dokumentasi Timnas Arhan. Cover highlight dan arsip foto/video belum disalin ke repo. Profil memiliki 231 postingan saat diperiksa; katalog ini memilih materi yang relevan untuk profil klub dan bukan arsip lengkap seluruh postingan.
 
-Sebelum menambahkan foto pemain ke file statis situs, pilih aset spesifik dan pastikan materi tersebut memang boleh dipublikasikan ulang di website. Saat ini tidak ada foto atlet yang disimpan lokal; post GBL dimuat dari embed Instagram resmi.
+Empat cover hasil GBL 2.0 di atas disimpan lokal dari posting akun resmi, dengan tautan kembali ke sumber Instagram. Aset tersebut dipakai pada homepage dan arsip prestasi.
 
 ## Menambah foto lokal (fase A)
 
