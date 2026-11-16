@@ -60,12 +60,12 @@ const registration = registrationLink('id');
         <p class="not-found-signoff">TOGETHER WE FLY · GARUDAONE BASKETBALL</p>
       </section>
 
-      <div class="not-found-photo">
+      <div class="not-found-logo">
         <img
-          src={withBase('media/friendly-match-ku10-mix-vs-galaxy-star-2026-11.jpg')}
-          alt="Pemain KU10 Mix Garudaone berkumpul di lapangan sebelum pertandingan persahabatan."
-          width="361"
-          height="640"
+          src={club.logo}
+          alt="Logo Garuda One Basketball"
+          width="512"
+          height="512"
           fetchpriority="high"
         />
       </div>
@@ -212,21 +212,20 @@ const registration = registrationLink('id');
     letter-spacing: 0.16em;
   }
 
-  .not-found-photo {
+  .not-found-logo {
     width: 100%;
-    max-width: 500px;
+    max-width: 470px;
     aspect-ratio: 1 / 1;
     justify-self: end;
     overflow: hidden;
     border: 1px solid #544a3b;
-    background: #201b15;
+    background: #000;
   }
 
-  .not-found-photo img {
+  .not-found-logo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 90%;
+    object-fit: contain;
   }
 
   .not-found-footer {
@@ -284,14 +283,10 @@ const registration = registrationLink('id');
       margin-top: 3rem;
     }
 
-    .not-found-photo {
-      width: min(100%, 440px);
+    .not-found-logo {
+      width: min(100%, 400px);
       justify-self: center;
       aspect-ratio: 1 / 1;
-    }
-
-    .not-found-photo img {
-      object-position: center 90%;
     }
   }
 
