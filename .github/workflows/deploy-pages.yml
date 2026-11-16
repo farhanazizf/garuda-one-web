@@ -27,8 +27,8 @@ jobs:
       - run: npm run check
       - run: npm run build
         env:
-          BASE_PATH: /garuda-one-web
-          PUBLIC_SITE_URL: https://farhanazizf.github.io/garuda-one-web
+          BASE_PATH: /
+          PUBLIC_SITE_URL: https://garudaone.web.id
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
